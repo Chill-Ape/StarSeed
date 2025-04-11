@@ -111,11 +111,16 @@ public class PlayerController : MonoBehaviour
 
                         block.PloughSoil();
 
+                            anim.SetTrigger("usePlough");
+
                         break;
 
                         case ToolType.wateringCan:
+                            block.WaterSoil();
 
-                        break;
+                            anim.SetTrigger("useWateringcan");
+
+                            break;
 
                         case ToolType.seeds:
 

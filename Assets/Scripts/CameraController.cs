@@ -48,6 +48,8 @@ public class CameraController : MonoBehaviour
     void Update()
     {
 
+        
+
         transform.position = new Vector3(target.position.x, target.position.y, transform.position.z);
 
         Vector3 clampedPosition = transform.position;
@@ -58,7 +60,14 @@ public class CameraController : MonoBehaviour
         transform.position = clampedPosition;
         
         
-        
+        if (target == null)
+        {
+            PlayerController player = FindAnyObjectByType<PlayerController>();
+            if (player != null)
+        {
+        target = player.transform;
+    }
+}
        
        
         float scrollData = Input.GetAxis("Mouse ScrollWheel");

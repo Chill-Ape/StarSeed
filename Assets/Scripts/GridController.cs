@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridController : MonoBehaviour
@@ -8,7 +9,12 @@ public class GridController : MonoBehaviour
     public GrowBlock baseGridBlock;
 
     private Vector2Int gridSize;
+
+    public List<BlockRow> blockRows = new List<BlockRow>();
+
+    public LayerMask gridBlockers;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         GenerateGrid();
@@ -34,15 +40,25 @@ public class GridController : MonoBehaviour
 
         for(int y = 0; y < gridSize.y; y++)
         {
+            blockRows.Add(new BlockRow());
+
             for(int x=0; x < gridSize.x; x++)
             {
                GrowBlock newBlock = Instantiate(baseGridBlock,startpoint + new Vector3(x, y, 0f), Quaternion.identity);
 
                newBlock.transform.SetParent(transform);
+
+               blockRows[y].blocks.Add(newBlock);
             }
             
         }
 
         baseGridBlock.gameObject.SetActive(false);
     }
+}
+
+[System.Serializable]
+public class BlockRow
+{       
+    public List<GrowBlock> blocks = new List<GrowBlock>();
 }

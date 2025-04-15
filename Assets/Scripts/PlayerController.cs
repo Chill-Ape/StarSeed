@@ -5,7 +5,18 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
 
-
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else
+        {
+            Destroy(gameObject);
+        }
+        
+    }
     public Rigidbody2D theRB;
     public float moveSpeed;
 
@@ -178,9 +189,4 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-        private void Awake()
-    {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 }

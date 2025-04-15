@@ -19,16 +19,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
 
-        target = FindAnyObjectByType<PlayerController>().transform;
-        PlayerController player = FindAnyObjectByType<PlayerController>();
-    if (player != null)
-    {
-        target = player.transform;
-    }
-    else
-    {
-        Debug.LogError("PlayerController not found. Ensure the player is active in the scene.");
-    }
+        //target = FindAnyObjectByType<PlayerController>().transform;
+        target = PlayerController.instance.transform;
 
         clampMin.SetParent(null);
         clampMax.SetParent(null);
@@ -36,6 +28,7 @@ public class CameraController : MonoBehaviour
         cam = GetComponent<Camera>();
         halfHeight = cam.orthographicSize;
         halfWidth = cam.orthographicSize * cam.aspect;
+        
 
         if (mainCamera == null)
         {
@@ -59,15 +52,7 @@ public class CameraController : MonoBehaviour
 
         transform.position = clampedPosition;
         
-        
-        if (target == null)
-        {
-            PlayerController player = FindAnyObjectByType<PlayerController>();
-            if (player != null)
-        {
-        target = player.transform;
-    }
-}
+
        
        
         float scrollData = Input.GetAxis("Mouse ScrollWheel");

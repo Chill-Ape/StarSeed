@@ -5,12 +5,22 @@ public class AreaSwitcher : MonoBehaviour
 {
     public string sceneToLoad;
 
-    //public Transform startPoint;
+    public Transform startPoint;
+
+    public string transitionName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
     {
-       //PlayerController.instance.transform.position = startPoint.position;
+
+        if(PlayerPrefs.HasKey("Transition"))
+        {
+            if(PlayerPrefs.GetString("Transition") == transitionName)
+            {
+                  PlayerController.instance.transform.position = startPoint.position;
+            }
+        }
+     
     }
 
     // Update is called once per frame
@@ -25,6 +35,8 @@ public class AreaSwitcher : MonoBehaviour
         {
             //Debug.Log("player enters");
             SceneManager.LoadScene(sceneToLoad);
+
+            PlayerPrefs.SetString("Transition", transitionName);
         }
     }
 }

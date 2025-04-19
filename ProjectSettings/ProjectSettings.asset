@@ -673,10 +673,10 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: f5519be8-be27-4428-8dca-986527dd1919
+  cloudProjectId: 6abb5cd0-6e7b-44dc-bb77-f22b125c4040
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: My project
+  projectName: StarSeed
   organizationId: fillipirochat
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

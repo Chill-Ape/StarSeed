@@ -47,6 +47,9 @@ TagManager:
   - name: Crops
     uniqueID: 915835327
     locked: 0
+  - name: Houses
+    uniqueID: 1452327373
+    locked: 0
   - name: Player
     uniqueID: 3319635281
     locked: 0

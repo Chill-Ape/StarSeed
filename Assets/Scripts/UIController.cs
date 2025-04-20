@@ -8,12 +8,13 @@ public class UIController : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
         } else
         {
             Destroy(gameObject);
         }
+
     }
 
     public GameObject [] toolbarActivatorIcons;

@@ -144,6 +144,12 @@ public class PlayerController : MonoBehaviour
         Mathf.FloorToInt(toolIndicator.position.y) + .5f,
         0f);
 
+        void LateUpdate() 
+        {
+            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y * 100);
+        }
+
+
     }
 
             void UseTool()

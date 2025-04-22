@@ -41,6 +41,9 @@ TagManager:
   - name: Ground
     uniqueID: 3531619549
     locked: 0
+  - name: Ground Overlay
+    uniqueID: 4101183785
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

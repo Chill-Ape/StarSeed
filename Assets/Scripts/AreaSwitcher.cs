@@ -1,42 +1,41 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Required for SceneManager
 
 public class AreaSwitcher : MonoBehaviour
 {
+    [Header("Scene Transition Settings")]
     public string sceneToLoad;
-
-    public Transform startPoint;
-
     public string transitionName;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-   void Start()
-    {
+    [Header("Optional Start Point")]
+    public Transform startPoint;
 
-        if(PlayerPrefs.HasKey("Transition"))
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("Transition") && PlayerController.instance != null)
         {
-            if(PlayerPrefs.GetString("Transition") == transitionName)
+            if (PlayerPrefs.GetString("Transition") == transitionName && startPoint != null)
             {
-                  PlayerController.instance.transform.position = startPoint.position;
+                PlayerController.instance.transform.position = startPoint.position;
+                PlayerPrefs.DeleteKey("Transition");
             }
         }
-     
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-            //Debug.Log("player enters");
-            SceneManager.LoadScene(sceneToLoad);
-
             PlayerPrefs.SetString("Transition", transitionName);
+
+            SceneLoader loader = FindObjectOfType<SceneLoader>();
+            if (loader != null)
+            {
+                loader.LoadScene(sceneToLoad);
+            }
+            else
+            {
+                Debug.LogError("SceneLoader not found in the scene!");
+            }
         }
     }
 }

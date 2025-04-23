@@ -92,6 +92,8 @@ public class PlayerController : MonoBehaviour
             UIController.instance.SwitchTool((int)currentTool);
         }
 
+        anim.SetFloat("speed", theRB.linearVelocity.magnitude);
+
         if (GridController.instance != null)
         {
             if (actionInput.action.WasPressedThisFrame())
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
             UseTool();
         }
 
-        anim.SetFloat("speed", theRB.linearVelocity.magnitude);
+        
 
         toolIndicator.position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         toolIndicator.position = new Vector3(toolIndicator.position.x, toolIndicator.position.y, 0f);

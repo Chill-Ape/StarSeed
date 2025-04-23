@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class GridInfo : MonoBehaviour
 {
@@ -38,13 +40,49 @@ public class GridInfo : MonoBehaviour
       }
   }
 
-    public void UpdateInfo(GrowBlock theBlock, int xpos, int ypos)
-    {
-        theGrid[ypos].blocks[xpos].currentStage = theBlock.currentStage;
-        theGrid[ypos].blocks[xpos].isWatered = theBlock.isWatered;
-    }
+  public void UpdateInfo(GrowBlock theBlock, int xpos, int ypos)
+  {
+    theGrid[ypos].blocks[xpos].currentStage = theBlock.currentStage;
+    theGrid[ypos].blocks[xpos].isWatered = theBlock.isWatered;
+  }
 
+  public void GrowCrop()
+  {
+    for(int y = 0; y < theGrid.Count; y++)
+    {
+      for(int x = 0; x < theGrid[y].blocks.Count; x++)
+      {
+        if(theGrid[y].blocks[x].isWatered == true)
+        {
+            switch(theGrid[y].blocks[x].currentStage)
+            {
+                case GrowBlock.GrowthStage.planted:
+                    theGrid[y].blocks[x].currentStage = GrowBlock.GrowthStage.growing1;
+                break;
+
+                case GrowBlock.GrowthStage.growing1:
+                    theGrid[y].blocks[x].currentStage = GrowBlock.GrowthStage.growing2;
+                break;
+
+                case GrowBlock.GrowthStage.growing2:
+                    theGrid[y].blocks[x].currentStage = GrowBlock.GrowthStage.ripe;
+                break;
+
+            }
+        }
+      }
+    }
+  }
+    private void Update()
+    {
+        if(Keyboard.current.yKey.wasPressedThisFrame)
+        {
+            GrowCrop();
+        }
+    }
 }
+
+
 
   
 
@@ -55,6 +93,7 @@ public class BlockInfo
     public bool isWatered;
     public GrowBlock.GrowthStage currentStage;
 }
+
 [System.Serializable]
 public class InfoRow
 {

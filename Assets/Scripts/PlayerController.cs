@@ -92,7 +92,9 @@ public class PlayerController : MonoBehaviour
             UIController.instance.SwitchTool((int)currentTool);
         }
 
-        if (actionInput.action.WasPressedThisFrame())
+        if (GridController.instance != null)
+        {
+            if (actionInput.action.WasPressedThisFrame())
         {
             UseTool();
         }
@@ -114,6 +116,10 @@ public class PlayerController : MonoBehaviour
             Mathf.FloorToInt(toolIndicator.position.y) + 0.5f,
             0f
         );
+        } else 
+        {
+            toolIndicator.position = new Vector3(0f, 0f, -20f);
+        }
     }
 
     void LateUpdate()

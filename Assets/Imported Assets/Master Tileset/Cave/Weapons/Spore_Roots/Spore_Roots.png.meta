@@ -210,6 +210,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1084,7 +1097,46 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Spore_Roots_0: -6891646815175463064
+      Spore_Roots_1: 1137883834683095085
+      Spore_Roots_10: -2090774251416508009
+      Spore_Roots_11: -6122598406499452273
+      Spore_Roots_12: -5895412980734524294
+      Spore_Roots_13: 685184031330476296
+      Spore_Roots_14: -1029691473669879538
+      Spore_Roots_15: -5901579760487335760
+      Spore_Roots_16: 1781674017233976867
+      Spore_Roots_17: 5447196486851429625
+      Spore_Roots_18: 931887600471900186
+      Spore_Roots_19: -2061524277318334291
+      Spore_Roots_2: -9220483008824595797
+      Spore_Roots_20: -840926487785565649
+      Spore_Roots_21: 8096125444809033415
+      Spore_Roots_22: -4476841373948288114
+      Spore_Roots_23: -4906263122795109692
+      Spore_Roots_24: -8808887121382752782
+      Spore_Roots_25: 8589848035469825877
+      Spore_Roots_26: 1980954362006606154
+      Spore_Roots_27: 9132159853558460919
+      Spore_Roots_28: -4251240707000836578
+      Spore_Roots_29: -1937764268948520444
+      Spore_Roots_3: -1329338159172051808
+      Spore_Roots_30: -772692123018171731
+      Spore_Roots_31: -7339292185565455698
+      Spore_Roots_32: 4076701887600542432
+      Spore_Roots_33: -7144729004032273808
+      Spore_Roots_34: 9069726286402425934
+      Spore_Roots_35: -1739056553239685050
+      Spore_Roots_36: -2550831580561057896
+      Spore_Roots_37: 5288423068002261228
+      Spore_Roots_38: -1384625632647645002
+      Spore_Roots_4: 7729543890886334693
+      Spore_Roots_5: -697233561045014143
+      Spore_Roots_6: -1428508227887139456
+      Spore_Roots_7: -8302469602312860594
+      Spore_Roots_8: -1407790052715539830
+      Spore_Roots_9: 1578735031769081460
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

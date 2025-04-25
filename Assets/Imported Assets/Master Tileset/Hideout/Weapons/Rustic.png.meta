@@ -210,6 +210,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1084,7 +1097,46 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rustic_0: 7650110010092860825
+      Rustic_1: 2900128962962184209
+      Rustic_10: -1314352033404570533
+      Rustic_11: -5427596248691821331
+      Rustic_12: 3117089203465819811
+      Rustic_13: 7963951933144134601
+      Rustic_14: 5035989182132944663
+      Rustic_15: -6257359447798341320
+      Rustic_16: 7006652201135506450
+      Rustic_17: 3329414850810377380
+      Rustic_18: -5379196797985914719
+      Rustic_19: 5268224204228906879
+      Rustic_2: -494105894262239859
+      Rustic_20: -4070326590291938586
+      Rustic_21: -8124316840865802131
+      Rustic_22: 7493530829123665322
+      Rustic_23: 8685498235681632076
+      Rustic_24: 3772479329932621708
+      Rustic_25: 6807333105005826462
+      Rustic_26: -2243617934308586011
+      Rustic_27: 737502687522810428
+      Rustic_28: 3987222077728178702
+      Rustic_29: 8284749685905908082
+      Rustic_3: -9038203732052789177
+      Rustic_30: 6597726426448556331
+      Rustic_31: 31214098698591467
+      Rustic_32: -7578973644358766626
+      Rustic_33: 7814903548876106146
+      Rustic_34: 9172146783452876904
+      Rustic_35: 8806301654094731613
+      Rustic_36: -9184462114751121569
+      Rustic_37: 4788646483750017960
+      Rustic_38: 6870392531456847291
+      Rustic_4: -4987319431422102189
+      Rustic_5: -4578822249716474232
+      Rustic_6: 8949846507487818477
+      Rustic_7: 6125902118978119241
+      Rustic_8: 2525970181541238269
+      Rustic_9: -2903263908390907423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

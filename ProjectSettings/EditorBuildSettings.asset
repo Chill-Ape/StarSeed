@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Indoors.unity
     guid: 4b73c644d28044723b7e1b2bec6d7966
   - enabled: 1
+    path: Assets/Scenes/Date.unity
+    guid: 9030ba2fffd5a435cbdcf168233512bf
+  - enabled: 1
     path: Assets/Scenes/Indoors - copy.unity
     guid: dc1f60cb7e359df4eabc9d2f7364ac9a
   - enabled: 1

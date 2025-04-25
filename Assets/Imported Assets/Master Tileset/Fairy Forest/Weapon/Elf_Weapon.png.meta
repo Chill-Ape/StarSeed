@@ -168,6 +168,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -734,7 +747,32 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Elf_Weapon_0: 4186351506516287663
+      Elf_Weapon_1: -2590286090289281497
+      Elf_Weapon_10: -6298475779572580279
+      Elf_Weapon_11: -5504339278574627896
+      Elf_Weapon_12: -7454607471710345105
+      Elf_Weapon_13: 4662592548250902195
+      Elf_Weapon_14: -8691661942205776050
+      Elf_Weapon_15: 8016566745350679317
+      Elf_Weapon_16: -4926342244086153258
+      Elf_Weapon_17: 6396856612251559993
+      Elf_Weapon_18: -3506080225010315399
+      Elf_Weapon_19: 6067859622215961
+      Elf_Weapon_2: -5604657675000737001
+      Elf_Weapon_20: -8086275417934938727
+      Elf_Weapon_21: 5831266465449050976
+      Elf_Weapon_22: -7067491928216814595
+      Elf_Weapon_23: -7561295737132891787
+      Elf_Weapon_24: 4666794759528190763
+      Elf_Weapon_3: -4582804649916158424
+      Elf_Weapon_4: -1498247691661723239
+      Elf_Weapon_5: -6505287185786350381
+      Elf_Weapon_6: 1784087806440689538
+      Elf_Weapon_7: -5531090221832691718
+      Elf_Weapon_8: -2614261399008774063
+      Elf_Weapon_9: 6394340689462707721
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

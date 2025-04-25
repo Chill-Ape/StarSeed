@@ -147,6 +147,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -559,7 +572,25 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Desert-Gold_0: 6542258311662952977
+      Desert-Gold_1: -4395729859735790841
+      Desert-Gold_10: 5497419049139706222
+      Desert-Gold_11: -5408716746964714099
+      Desert-Gold_12: 6586862857076322367
+      Desert-Gold_13: -2754696429004224871
+      Desert-Gold_14: -3278896145162336004
+      Desert-Gold_15: 5821773763759900872
+      Desert-Gold_16: 8430218927919782425
+      Desert-Gold_17: 4309161122099567293
+      Desert-Gold_2: -8320905218980588788
+      Desert-Gold_3: -6505911876631423741
+      Desert-Gold_4: -5529585711822698624
+      Desert-Gold_5: -3651314187000980565
+      Desert-Gold_6: -5730216876043372738
+      Desert-Gold_7: 7841357958210026390
+      Desert-Gold_8: 3319920278033174090
+      Desert-Gold_9: -7066347534290601462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -159,6 +159,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -659,7 +672,29 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Graves_0: 7032554716221941038
+      Graves_1: -950371815448254290
+      Graves_10: 9106960257366147505
+      Graves_11: -1303503082180849849
+      Graves_12: 7941038435172530789
+      Graves_13: 7322876749275361258
+      Graves_14: -5743279674763523280
+      Graves_15: 5604464419096331780
+      Graves_16: -2915000789279581576
+      Graves_17: 5340882329826326072
+      Graves_18: 7894341826439703361
+      Graves_19: 1849055643947754586
+      Graves_2: -6367614522140921428
+      Graves_20: -3360627079795795874
+      Graves_21: 8694559517993597027
+      Graves_3: -1582098636282948072
+      Graves_4: 49981825027616467
+      Graves_5: -3592331345388220603
+      Graves_6: 1472537120265569156
+      Graves_7: -5795524997245889538
+      Graves_8: 4037496102859891190
+      Graves_9: 8366168374898726935
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

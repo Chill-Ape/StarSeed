@@ -222,6 +222,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1184,7 +1197,50 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Weapons_0: 5601323976189978565
+      Weapons_1: -761887118410055393
+      Weapons_10: 8789762969407134151
+      Weapons_11: -7651578999465136024
+      Weapons_12: 4247077973319795576
+      Weapons_13: 5066663443394370621
+      Weapons_14: -3161990638662096906
+      Weapons_15: 1708842436377342384
+      Weapons_16: -4994013504720742411
+      Weapons_17: 4806463276367451825
+      Weapons_18: -3381449088394115441
+      Weapons_19: 5711273657361161810
+      Weapons_2: 9147546874185701050
+      Weapons_20: 4774762479299409953
+      Weapons_21: 131278801844023632
+      Weapons_22: 4521503878155881252
+      Weapons_23: 6866815247170767786
+      Weapons_24: -8331011272066912826
+      Weapons_25: -150671194606510068
+      Weapons_26: 111540097082384536
+      Weapons_27: 8681363007004761560
+      Weapons_28: -3422229986052813780
+      Weapons_29: -1927235674067380734
+      Weapons_3: -8951780388439148649
+      Weapons_30: -1541056526609149816
+      Weapons_31: -6288762130912202625
+      Weapons_32: 6805589676669568565
+      Weapons_33: 6519534834367024183
+      Weapons_34: 788345244506007323
+      Weapons_35: 867223971686019024
+      Weapons_36: -7535021196332488685
+      Weapons_37: 6669944509270795423
+      Weapons_38: 5983389886235713193
+      Weapons_39: 155036968514290473
+      Weapons_4: -5082318553336741150
+      Weapons_40: -6238440442334815089
+      Weapons_41: -3721989352038006921
+      Weapons_42: -774299901840641857
+      Weapons_5: -3087264978319007404
+      Weapons_6: -21522807587195298
+      Weapons_7: -3776783329477156521
+      Weapons_8: 7834802711767081893
+      Weapons_9: 7569684938147083892
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

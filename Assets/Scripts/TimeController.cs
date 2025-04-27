@@ -68,6 +68,7 @@ public class TimeController : MonoBehaviour
         currentDay++;
 
         GridInfo.instance.GrowCrop();
+        
 
         PlayerPrefs.SetString("Transition", "Wake Up");
 

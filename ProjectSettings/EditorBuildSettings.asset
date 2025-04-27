@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Town.unity
     guid: 13d027c1f44af4edca0d087369807a8c
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: aabc08423fee341439ca50576bb83b6a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

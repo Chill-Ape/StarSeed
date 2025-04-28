@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rock_Gray_Sand_13_0: -9218184850539372524
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

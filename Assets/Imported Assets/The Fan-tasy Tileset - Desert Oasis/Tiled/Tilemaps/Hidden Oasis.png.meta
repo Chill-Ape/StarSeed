@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hidden Oasis_0: -8208017828200437423
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

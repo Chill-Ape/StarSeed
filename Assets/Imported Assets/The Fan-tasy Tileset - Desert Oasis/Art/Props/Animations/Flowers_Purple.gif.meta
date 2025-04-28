@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Flowers_Purple_0: 4488331241845871772
+      Flowers_Purple_1: -754671852543305212
+      Flowers_Purple_10: -4798926947357888493
+      Flowers_Purple_11: -3653986867852554382
+      Flowers_Purple_12: -8432241103987347638
+      Flowers_Purple_13: -1455533052467020342
+      Flowers_Purple_14: -7571654422663672431
+      Flowers_Purple_2: 5838123262919108911
+      Flowers_Purple_3: 1677085856437308894
+      Flowers_Purple_4: -7657268257392096519
+      Flowers_Purple_5: -5072696376032007687
+      Flowers_Purple_6: -6301808486073472336
+      Flowers_Purple_7: -746488486163867171
+      Flowers_Purple_8: -1369398401840572144
+      Flowers_Purple_9: 1473062868394349255
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

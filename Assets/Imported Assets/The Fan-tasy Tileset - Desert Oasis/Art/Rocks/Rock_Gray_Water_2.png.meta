@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Rock_Gray_Water_2_0: 2978625940992394807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

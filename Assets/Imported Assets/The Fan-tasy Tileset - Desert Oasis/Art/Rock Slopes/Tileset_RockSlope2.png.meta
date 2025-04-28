@@ -1722,7 +1722,71 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tileset_RockSlope2_0: 1055946423585958714
+      Tileset_RockSlope2_1: 8612949077801461217
+      Tileset_RockSlope2_10: 5285488312296484799
+      Tileset_RockSlope2_11: -7635132049206176169
+      Tileset_RockSlope2_12: 4146777778035754770
+      Tileset_RockSlope2_13: 7477016069710227994
+      Tileset_RockSlope2_14: 2733646313346884232
+      Tileset_RockSlope2_15: 8245688830863757746
+      Tileset_RockSlope2_16: -1732180817018664819
+      Tileset_RockSlope2_17: 8281742043708464292
+      Tileset_RockSlope2_18: -5703361466133196813
+      Tileset_RockSlope2_19: -1416930248985416262
+      Tileset_RockSlope2_2: 1316336476889179649
+      Tileset_RockSlope2_20: -3080629877930902720
+      Tileset_RockSlope2_21: -1217143231557554897
+      Tileset_RockSlope2_22: 215012553421804364
+      Tileset_RockSlope2_23: -8721329377865523274
+      Tileset_RockSlope2_24: -1498950961954805969
+      Tileset_RockSlope2_25: -1066143618122702754
+      Tileset_RockSlope2_26: 576461527305798148
+      Tileset_RockSlope2_27: -8998767041057939443
+      Tileset_RockSlope2_28: -5887150893473251015
+      Tileset_RockSlope2_29: -3116741688846040261
+      Tileset_RockSlope2_3: 6850244613590741119
+      Tileset_RockSlope2_30: 2334015197256098426
+      Tileset_RockSlope2_31: -4984029241635486718
+      Tileset_RockSlope2_32: 1703968948231044811
+      Tileset_RockSlope2_33: 884098566695041799
+      Tileset_RockSlope2_34: 1620173215892271005
+      Tileset_RockSlope2_35: 2186350109545087386
+      Tileset_RockSlope2_36: -6201975611460475044
+      Tileset_RockSlope2_37: 967029252899831935
+      Tileset_RockSlope2_38: -7784517178913452137
+      Tileset_RockSlope2_39: -7144088681807885560
+      Tileset_RockSlope2_4: -5265886346423406355
+      Tileset_RockSlope2_40: -4389572955175372294
+      Tileset_RockSlope2_41: -639450920929712257
+      Tileset_RockSlope2_42: 1340780781193506172
+      Tileset_RockSlope2_43: -2348812814376090315
+      Tileset_RockSlope2_44: 2853442429249892512
+      Tileset_RockSlope2_45: 3646264835176887657
+      Tileset_RockSlope2_46: 8051574695831810047
+      Tileset_RockSlope2_47: -1947829258606282692
+      Tileset_RockSlope2_48: 1585522453976197887
+      Tileset_RockSlope2_49: -6409197121829663823
+      Tileset_RockSlope2_5: -1687269341815159051
+      Tileset_RockSlope2_50: -2038080383301976990
+      Tileset_RockSlope2_51: -3845929944371532554
+      Tileset_RockSlope2_52: -5454317586284247779
+      Tileset_RockSlope2_53: -3859425785821472669
+      Tileset_RockSlope2_54: -3634884044710572283
+      Tileset_RockSlope2_55: 3966047908306600912
+      Tileset_RockSlope2_56: 1522941303146950906
+      Tileset_RockSlope2_57: -263495046341148093
+      Tileset_RockSlope2_58: 6498373324261144595
+      Tileset_RockSlope2_59: 7300820869872820216
+      Tileset_RockSlope2_6: -383653532804504925
+      Tileset_RockSlope2_60: 3940118863505654335
+      Tileset_RockSlope2_61: -2286044091168962281
+      Tileset_RockSlope2_62: 1086297734055277716
+      Tileset_RockSlope2_63: 3472208217121224024
+      Tileset_RockSlope2_7: 5248763275050270982
+      Tileset_RockSlope2_8: 8122917001051948940
+      Tileset_RockSlope2_9: 7969854093584327894
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

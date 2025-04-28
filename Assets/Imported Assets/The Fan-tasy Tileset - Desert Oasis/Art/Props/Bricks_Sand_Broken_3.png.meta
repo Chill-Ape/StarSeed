@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bricks_Sand_Broken_3_0: -1088668804871402524
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

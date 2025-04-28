@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LeavyBush_Light_2_0: -4603266012044068553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

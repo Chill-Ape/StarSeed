@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Flowers_Yellow_0: -197291659626518411
+      Flowers_Yellow_1: 7308820919564115296
+      Flowers_Yellow_10: 265022219138905988
+      Flowers_Yellow_11: 3712465326246201714
+      Flowers_Yellow_12: -4877553007243915023
+      Flowers_Yellow_13: -7978428235145552984
+      Flowers_Yellow_14: 1864738535557071308
+      Flowers_Yellow_2: -5692702219228209795
+      Flowers_Yellow_3: -9101733724616118479
+      Flowers_Yellow_4: 7088943115756821249
+      Flowers_Yellow_5: -5121984964093695644
+      Flowers_Yellow_6: -502252937072150691
+      Flowers_Yellow_7: 6739562127858557412
+      Flowers_Yellow_8: 8448748762319002039
+      Flowers_Yellow_9: 5276136575321837599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

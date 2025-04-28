@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Tileset_TallGrass_Desert_0: 290253489923001946
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

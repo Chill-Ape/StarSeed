@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Palm_Light_1_0: -701325932218812716
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

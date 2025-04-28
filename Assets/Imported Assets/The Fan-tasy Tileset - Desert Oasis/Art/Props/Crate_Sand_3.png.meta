@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crate_Sand_3_0: 1030049374037663429
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

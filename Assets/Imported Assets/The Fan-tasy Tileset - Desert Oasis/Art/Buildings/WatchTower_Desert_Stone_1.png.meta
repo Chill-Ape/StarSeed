@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WatchTower_Desert_Stone_1_0: -775632614229797388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

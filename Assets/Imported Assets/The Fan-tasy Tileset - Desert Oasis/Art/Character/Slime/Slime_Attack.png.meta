@@ -722,7 +722,31 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Slime_Attack_0: -2973451537762976303
+      Slime_Attack_1: 5111238958472826609
+      Slime_Attack_10: 1546752723138402163
+      Slime_Attack_11: -8961984497234942244
+      Slime_Attack_12: -4450284136157403352
+      Slime_Attack_13: -7637549062301654496
+      Slime_Attack_14: 7227958158717240564
+      Slime_Attack_15: -2996610820727904966
+      Slime_Attack_16: 153149644776513056
+      Slime_Attack_17: 5358165563941300409
+      Slime_Attack_18: -3745569759656547045
+      Slime_Attack_19: -2121795714052628773
+      Slime_Attack_2: 9152024166722576120
+      Slime_Attack_20: 1754169609437975361
+      Slime_Attack_21: 4851981077748309204
+      Slime_Attack_22: 2146981631322193459
+      Slime_Attack_23: 2068573637114005361
+      Slime_Attack_3: 1389024830322028585
+      Slime_Attack_4: 5419292521822861828
+      Slime_Attack_5: -8086521413425765603
+      Slime_Attack_6: -9010499524453885195
+      Slime_Attack_7: 4142713597031440466
+      Slime_Attack_8: 7865238454506623691
+      Slime_Attack_9: 6477476097928511389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

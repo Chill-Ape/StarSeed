@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cactus_Emerald_3_0: 1986908869114168550
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -397,7 +397,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Buildings_Desert_0: -1705191407051738094
+      Buildings_Desert_1: -2062869267892035385
+      Buildings_Desert_10: -4088889715380761106
+      Buildings_Desert_2: 1468726447566378585
+      Buildings_Desert_3: -7173479008297143278
+      Buildings_Desert_4: 2880079518402035753
+      Buildings_Desert_5: 595291368310982605
+      Buildings_Desert_6: -1829667978776588742
+      Buildings_Desert_7: -1121119269936116703
+      Buildings_Desert_8: -2489696994013711524
+      Buildings_Desert_9: -8384781298304971622
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1122,7 +1122,47 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Slime_Death_0: -8243190169408259080
+      Slime_Death_1: 3784242957002869176
+      Slime_Death_10: -6711702647438983980
+      Slime_Death_11: 746912030422441416
+      Slime_Death_12: 6983291159981259201
+      Slime_Death_13: 331571912411813235
+      Slime_Death_14: 9155758501558755243
+      Slime_Death_15: -596037836455354522
+      Slime_Death_16: 8713716498667553169
+      Slime_Death_17: -98446319086177851
+      Slime_Death_18: -8480460754572798672
+      Slime_Death_19: 5395441316773026905
+      Slime_Death_2: -1863946119019960354
+      Slime_Death_20: 7077868749979981260
+      Slime_Death_21: 9061313677579014149
+      Slime_Death_22: -3511315434488786089
+      Slime_Death_23: 2832700857459448554
+      Slime_Death_24: 5816095142014504458
+      Slime_Death_25: -5895466086114226431
+      Slime_Death_26: -5967257033313941436
+      Slime_Death_27: -5985385680388576219
+      Slime_Death_28: 4315020109703819539
+      Slime_Death_29: 987782033091745966
+      Slime_Death_3: 4186164137342807406
+      Slime_Death_30: -3277686066837174491
+      Slime_Death_31: 7775267221943724016
+      Slime_Death_32: 1502514093067892844
+      Slime_Death_33: -6428059386713374577
+      Slime_Death_34: -3184071899803033508
+      Slime_Death_35: 7935351789582575556
+      Slime_Death_36: -8896579320048031054
+      Slime_Death_37: 5182920428847473055
+      Slime_Death_38: 2579034398725865553
+      Slime_Death_39: 2707028317352572153
+      Slime_Death_4: 5211632686368201884
+      Slime_Death_5: -5519192795782335820
+      Slime_Death_6: -6108867693942160823
+      Slime_Death_7: 9025415975278210465
+      Slime_Death_8: -1815090803076975436
+      Slime_Death_9: -8416939399716271618
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Barrel_Sand_1_0: -3780011234661303260
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

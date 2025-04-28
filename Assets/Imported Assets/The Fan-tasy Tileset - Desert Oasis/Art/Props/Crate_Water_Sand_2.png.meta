@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crate_Water_Sand_2_0: -469904249822069702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

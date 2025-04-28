@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Magic_Crystal_6_0: 4218153177032083987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

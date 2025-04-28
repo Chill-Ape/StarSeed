@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Palm_Emerald_2_0: -1183612586565979881
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

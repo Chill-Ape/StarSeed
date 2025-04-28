@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MarketStand_1_0: 1691379696756211133
+      MarketStand_1_1: -2689592147974798851
+      MarketStand_1_2: -2962989913634710558
+      MarketStand_1_3: -4600390098965626528
+      MarketStand_1_4: 10383276721263785
+      MarketStand_1_5: -518338419640306406
+      MarketStand_1_6: -3138933190957654945
+      MarketStand_1_7: -6900574661338159305
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Well_Desert_Stone_0: -7237271742245234345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

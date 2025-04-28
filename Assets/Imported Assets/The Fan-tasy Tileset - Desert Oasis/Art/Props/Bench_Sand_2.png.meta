@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bench_Sand_2_0: 534654394723179306
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

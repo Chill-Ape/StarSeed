@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LeavyBush_Emerald_4_0: -4602177835605300195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -647,7 +647,28 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Building_Props_Desert_0: -8413332662233061578
+      Building_Props_Desert_1: 978793420227465183
+      Building_Props_Desert_10: 7987558194192326682
+      Building_Props_Desert_11: -1933708698466974589
+      Building_Props_Desert_12: 7248369742831414344
+      Building_Props_Desert_13: -3426669337262796712
+      Building_Props_Desert_14: -315421750602058884
+      Building_Props_Desert_15: 8517958353303567618
+      Building_Props_Desert_16: -3211736892773961184
+      Building_Props_Desert_17: -6920135782868309648
+      Building_Props_Desert_18: -5415174046740934951
+      Building_Props_Desert_19: -5315003701887567854
+      Building_Props_Desert_2: -8936140608507323376
+      Building_Props_Desert_20: -2041891563722945535
+      Building_Props_Desert_3: 6378770170908832645
+      Building_Props_Desert_4: 7857536491569611134
+      Building_Props_Desert_5: 8253471361461259759
+      Building_Props_Desert_6: 3754275978143009109
+      Building_Props_Desert_7: 5091727760070021239
+      Building_Props_Desert_8: 3051538604135212809
+      Building_Props_Desert_9: 367860720274605428
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

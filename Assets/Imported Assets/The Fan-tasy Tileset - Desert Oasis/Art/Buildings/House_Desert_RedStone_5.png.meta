@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      House_Desert_RedStone_5_0: -395256047458089639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

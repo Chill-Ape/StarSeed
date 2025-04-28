@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wood_Cart_Sand_0: 4664889617768519785
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

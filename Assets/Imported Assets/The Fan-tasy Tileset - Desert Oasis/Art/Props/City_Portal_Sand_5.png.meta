@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      City_Portal_Sand_5_0: 7060704409596827229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

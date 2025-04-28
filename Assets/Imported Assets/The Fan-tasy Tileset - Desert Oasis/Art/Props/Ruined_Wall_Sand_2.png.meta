@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ruined_Wall_Sand_2_0: 7758273861577071880
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

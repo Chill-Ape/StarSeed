@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bulletin_Board_Sand_0: 2951563540577379276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

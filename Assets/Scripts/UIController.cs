@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
+
 
 public class UIController : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class UIController : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
 
         } else
         {
@@ -21,6 +23,8 @@ public class UIController : MonoBehaviour
     public GameObject [] toolbarActivatorIcons;
 
     public TMP_Text timeText;
+
+    public InventoryController theIC;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +34,10 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Keyboard.current.iKey.wasPressedThisFrame)
+        {
+            theIC.OpenClose();
+        }
         
     }
 

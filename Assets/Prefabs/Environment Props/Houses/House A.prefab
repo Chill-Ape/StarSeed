@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5395906265818669110}
   - component: {fileID: 1746560534350040950}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: House A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 4284927727110268609}
   - component: {fileID: 2344331455156797308}
   - component: {fileID: 2875895254114997869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   - component: {fileID: 2201030089941794422}
   - component: {fileID: 6300579767302865096}
   - component: {fileID: 6798272005354670957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}

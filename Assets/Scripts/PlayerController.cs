@@ -71,6 +71,19 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        if(UIController.instance.pauseScreen != null)
+        {
+            
+                if(UIController.instance.pauseScreen.gameObject.activeSelf)
+                {
+
+                    theRB.linearVelocity = Vector2.zero;
+
+                    return;
+                }
+        }
+
         if (toolWaitCounter > 0)
         {
             toolWaitCounter -= Time.deltaTime;

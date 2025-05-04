@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class UIController : MonoBehaviour
@@ -29,7 +30,10 @@ public class UIController : MonoBehaviour
     public ShopController theShop;
 
     public Image seedImage;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public GameObject pauseScreen;
+    public string mainMenuScene;
+
     void Start()
     {
         SwitchTool(0);
@@ -42,12 +46,18 @@ public class UIController : MonoBehaviour
         {
             theIC.OpenClose();
         }
+#if UNITY_EDITOR
 
         if(Keyboard.current.bKey.wasPressedThisFrame)
         {
             theShop.OpenClose();
         }
+#endif        
         
+        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            PauseUnpause();
+        }
     }
 
     public void SwitchTool(int selected)
@@ -82,5 +92,39 @@ public class UIController : MonoBehaviour
     public void SwitchSeed(CropController.CropType crop)
     {
         seedImage.sprite = CropController.instance.GetCropInfo(crop).seedType;
+    }
+
+    public void PauseUnpause()
+    {
+        if(pauseScreen.activeSelf == false)
+        {
+            pauseScreen.SetActive(true);
+
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+
+        }
+    }
+
+    public void MainMenu()
+    {
+
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(mainMenuScene);
+
+        Destroy(gameObject);
+        Destroy(PlayerController.instance.gameObject);
+        Destroy(GridInfo.instance.gameObject);
+        Destroy(CropController.instance.gameObject);
+        Destroy(TimeController.instance.gameObject);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

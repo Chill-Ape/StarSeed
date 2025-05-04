@@ -95,4 +95,6 @@ public class CropController : MonoBehaviour
     [Range(0f, 100f)]
     public float growthFailChance;
 
+    public float seedPrice, cropPrice;
+
  }

@@ -1322,7 +1322,55 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bird_fly_animation_0: 2147369376866629904
+      bird_fly_animation_1: -3605623928965336318
+      bird_fly_animation_10: -3553502627263021968
+      bird_fly_animation_11: 4635697299306443481
+      bird_fly_animation_12: 1640745264337374615
+      bird_fly_animation_13: 3452061488843770761
+      bird_fly_animation_14: -8529525032326610640
+      bird_fly_animation_15: 8034039606105632853
+      bird_fly_animation_16: -5262496487232525956
+      bird_fly_animation_17: 2381905650147710917
+      bird_fly_animation_18: -1955443896533504608
+      bird_fly_animation_19: 527162795774563000
+      bird_fly_animation_2: 7832187501611989627
+      bird_fly_animation_20: 7383333959464076881
+      bird_fly_animation_21: 966683556985540370
+      bird_fly_animation_22: 6012689530383604280
+      bird_fly_animation_23: 3184699038139933259
+      bird_fly_animation_24: 8541711233688565584
+      bird_fly_animation_25: -2529663975843908572
+      bird_fly_animation_26: -8341487059345218597
+      bird_fly_animation_27: -2050061959772509238
+      bird_fly_animation_28: 4702011022887752741
+      bird_fly_animation_29: -8732880876502815956
+      bird_fly_animation_3: -1829082045656845438
+      bird_fly_animation_30: -8845094457009327232
+      bird_fly_animation_31: 8392994770988033637
+      bird_fly_animation_32: -2179717841495251807
+      bird_fly_animation_33: -5780819951060184138
+      bird_fly_animation_34: 4553908116951992462
+      bird_fly_animation_35: 1004158356502414018
+      bird_fly_animation_36: 8328955304545378601
+      bird_fly_animation_37: -829135123681698624
+      bird_fly_animation_38: 5327356242233279157
+      bird_fly_animation_39: 638194754356456914
+      bird_fly_animation_4: -2342320521222188276
+      bird_fly_animation_40: 5286847817477871342
+      bird_fly_animation_41: -6695244720197357514
+      bird_fly_animation_42: 5356922054434957070
+      bird_fly_animation_43: -6025776206878936860
+      bird_fly_animation_44: -219474072455559720
+      bird_fly_animation_45: -2181315711428907462
+      bird_fly_animation_46: 3678558580531741053
+      bird_fly_animation_47: 6389115105268645068
+      bird_fly_animation_5: 745716188567951171
+      bird_fly_animation_6: 4172660295433170997
+      bird_fly_animation_7: -6548727737256270719
+      bird_fly_animation_8: -2608282900157169810
+      bird_fly_animation_9: -2865124552590586787
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

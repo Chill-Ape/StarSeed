@@ -1622,7 +1622,67 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bird_jump_animation_0: -2765212664995193693
+      bird_jump_animation_1: 5198677360626862941
+      bird_jump_animation_10: -1181245569942586450
+      bird_jump_animation_11: 498838088290422424
+      bird_jump_animation_12: 9122149709133189456
+      bird_jump_animation_13: -2802500035008633816
+      bird_jump_animation_14: 8014708954348064724
+      bird_jump_animation_15: -7690495416796558370
+      bird_jump_animation_16: -6440901024895196305
+      bird_jump_animation_17: 3433650866181680280
+      bird_jump_animation_18: -7094277220707706721
+      bird_jump_animation_19: 6016553878112220922
+      bird_jump_animation_2: 5880720680201059868
+      bird_jump_animation_20: 2857066642836032537
+      bird_jump_animation_21: -1282873698591174559
+      bird_jump_animation_22: -3939399501910210551
+      bird_jump_animation_23: 71236048418219862
+      bird_jump_animation_24: -5457468754699264899
+      bird_jump_animation_25: 5081922459480852719
+      bird_jump_animation_26: 4653025941672514738
+      bird_jump_animation_27: 2126599969946970212
+      bird_jump_animation_28: -8230209102687867086
+      bird_jump_animation_29: -1441814692643161762
+      bird_jump_animation_3: -3838661611365344054
+      bird_jump_animation_30: 7159662587109624590
+      bird_jump_animation_31: 599333996204484491
+      bird_jump_animation_32: -669979171387996941
+      bird_jump_animation_33: -8494688747962010052
+      bird_jump_animation_34: 2416644365088020749
+      bird_jump_animation_35: 7343353942999161121
+      bird_jump_animation_36: 3758274713526473432
+      bird_jump_animation_37: -2798049109193889872
+      bird_jump_animation_38: -1533529197619855293
+      bird_jump_animation_39: -8226969409334252984
+      bird_jump_animation_4: 1375457886729474868
+      bird_jump_animation_40: -4852804619842113268
+      bird_jump_animation_41: 3635046571622926513
+      bird_jump_animation_42: 1256373499982380051
+      bird_jump_animation_43: 5585456372586932579
+      bird_jump_animation_44: -665171287212309770
+      bird_jump_animation_45: -6224215836595433461
+      bird_jump_animation_46: -2020565946714729398
+      bird_jump_animation_47: 6337346260799516227
+      bird_jump_animation_48: 8862942746705431075
+      bird_jump_animation_49: -6525586432807880733
+      bird_jump_animation_5: -8987181956774525279
+      bird_jump_animation_50: 7529061424389206455
+      bird_jump_animation_51: -7627504413690855581
+      bird_jump_animation_52: 2259061148709226033
+      bird_jump_animation_53: -4135861819179152430
+      bird_jump_animation_54: -3034823291236701803
+      bird_jump_animation_55: 2243247945466759639
+      bird_jump_animation_56: 2078742832847692016
+      bird_jump_animation_57: 984462077044690157
+      bird_jump_animation_58: -7119460158085625306
+      bird_jump_animation_59: -29000740851161881
+      bird_jump_animation_6: -1521617179407174027
+      bird_jump_animation_7: 5419911146014172805
+      bird_jump_animation_8: 838046357801764331
+      bird_jump_animation_9: -6303526335753340335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

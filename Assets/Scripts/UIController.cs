@@ -92,6 +92,7 @@ public class UIController : MonoBehaviour
     public void SwitchSeed(CropController.CropType crop)
     {
         seedImage.sprite = CropController.instance.GetCropInfo(crop).seedType;
+        AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 
     public void PauseUnpause()
@@ -108,6 +109,8 @@ public class UIController : MonoBehaviour
             Time.timeScale = 1f;
 
         }
+
+        AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 
     public void MainMenu()
@@ -121,10 +124,12 @@ public class UIController : MonoBehaviour
         Destroy(GridInfo.instance.gameObject);
         Destroy(CropController.instance.gameObject);
         Destroy(TimeController.instance.gameObject);
+        AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+        AudioManager.instance.PlaySFXPitchAdjusted(5);
     }
 }

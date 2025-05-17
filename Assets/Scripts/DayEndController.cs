@@ -19,6 +19,8 @@ public class DayEndController : MonoBehaviour
         }
 
         AudioManager.instance.PauseMusic();
+
+        AudioManager.instance.PlaySFX(1);
         
     }
 

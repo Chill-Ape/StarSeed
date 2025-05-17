@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bird_jump_animation_0: -2765212664995193693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

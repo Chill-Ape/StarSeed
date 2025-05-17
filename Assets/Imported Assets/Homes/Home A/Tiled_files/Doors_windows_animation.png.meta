@@ -1047,7 +1047,44 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Doors_windows_animation_0: -9092231561747570659
+      Doors_windows_animation_1: 9190806093418426
+      Doors_windows_animation_10: 4706999532759936582
+      Doors_windows_animation_11: -6981722140549448652
+      Doors_windows_animation_12: 8968702525838698278
+      Doors_windows_animation_13: -7065679241240579485
+      Doors_windows_animation_14: -4195204601032980246
+      Doors_windows_animation_15: -5338618806635442795
+      Doors_windows_animation_16: -3407175581148231547
+      Doors_windows_animation_17: -2212420405747319286
+      Doors_windows_animation_18: 7696004370112825545
+      Doors_windows_animation_19: -7007908155438921763
+      Doors_windows_animation_2: 5836310277828690562
+      Doors_windows_animation_20: -2591569582646823070
+      Doors_windows_animation_21: -7133378912590234779
+      Doors_windows_animation_22: 4822939949023641671
+      Doors_windows_animation_23: 6811016715115466050
+      Doors_windows_animation_24: 3680035235668188046
+      Doors_windows_animation_25: 2208788436712473632
+      Doors_windows_animation_26: -4997675339344940550
+      Doors_windows_animation_27: 2294585799439733132
+      Doors_windows_animation_28: -5642198799666015862
+      Doors_windows_animation_29: 5536212875943595929
+      Doors_windows_animation_3: 7711519259035011175
+      Doors_windows_animation_30: 7883173425487852335
+      Doors_windows_animation_31: -6685058124529742513
+      Doors_windows_animation_32: -5762955126994735328
+      Doors_windows_animation_33: -5968706890635501507
+      Doors_windows_animation_34: -4598695343399148508
+      Doors_windows_animation_35: -869216465691666085
+      Doors_windows_animation_36: 7435578536327850038
+      Doors_windows_animation_4: -7096425680951714213
+      Doors_windows_animation_5: -7094096938082971348
+      Doors_windows_animation_6: -4814079252038426040
+      Doors_windows_animation_7: -1266146452759155243
+      Doors_windows_animation_8: 1838148868631591911
+      Doors_windows_animation_9: 4362602961476399379
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1247,7 +1247,52 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cat_animation_0: 4695545752672482760
+      cat_animation_1: -6487799343537143368
+      cat_animation_10: 5802880028279528302
+      cat_animation_11: 6834545567808300065
+      cat_animation_12: 4063170079404735973
+      cat_animation_13: 4384499132463843035
+      cat_animation_14: 8807509688295161186
+      cat_animation_15: 7400550984392321098
+      cat_animation_16: 421841258351237967
+      cat_animation_17: -8046530750720379652
+      cat_animation_18: -8150326958432210095
+      cat_animation_19: -1261562268342088173
+      cat_animation_2: 3386550236869090020
+      cat_animation_20: -4822491742009368180
+      cat_animation_21: 7110994007288734715
+      cat_animation_22: -450664644863466022
+      cat_animation_23: 3306988294317960748
+      cat_animation_24: -4899363996069366000
+      cat_animation_25: 1501630763867061979
+      cat_animation_26: 5394682585339014691
+      cat_animation_27: 6935719973630539633
+      cat_animation_28: -8586226308907469647
+      cat_animation_29: 6845119014524516587
+      cat_animation_3: -4276199070246039036
+      cat_animation_30: 843223570329603912
+      cat_animation_31: -8412405279428959607
+      cat_animation_32: 5074220768197578375
+      cat_animation_33: -6137057981786627135
+      cat_animation_34: 3417352921775029155
+      cat_animation_35: 3183241578668127808
+      cat_animation_36: -2538477464167766866
+      cat_animation_37: -619084644959600198
+      cat_animation_38: -5440512975240699414
+      cat_animation_39: -592570869898789799
+      cat_animation_4: -4206080095640231169
+      cat_animation_40: 2830134537764883123
+      cat_animation_41: -381311480937373642
+      cat_animation_42: 9206797322866710193
+      cat_animation_43: -2914888718238303227
+      cat_animation_44: 3138450264173956557
+      cat_animation_5: -4342015576616593413
+      cat_animation_6: -7250740491450338341
+      cat_animation_7: 8022581946610083074
+      cat_animation_8: 9185318439905102920
+      cat_animation_9: 4135803540889922985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

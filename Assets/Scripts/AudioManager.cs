@@ -26,7 +26,12 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        currentTrack = -1;
+           currentTrack = -1;
+
+        if (bgMusic.Length > 0)
+        {
+            PlayNextBGM();
+        }
     }
 
      private void Update()

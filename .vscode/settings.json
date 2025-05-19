@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "StarSeed.sln"
+    "dotnet.defaultSolution": "Covenant Scrolls.sln"
 }

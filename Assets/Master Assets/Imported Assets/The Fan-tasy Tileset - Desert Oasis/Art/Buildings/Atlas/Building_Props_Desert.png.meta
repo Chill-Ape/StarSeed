@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 58fcec8124aa348f3816e36b03241336
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8413332662233061578
+    second: Building_Props_Desert_0
+  - first:
+      213: 978793420227465183
+    second: Building_Props_Desert_1
+  - first:
+      213: -8936140608507323376
+    second: Building_Props_Desert_2
+  - first:
+      213: 6378770170908832645
+    second: Building_Props_Desert_3
+  - first:
+      213: 7857536491569611134
+    second: Building_Props_Desert_4
+  - first:
+      213: 8253471361461259759
+    second: Building_Props_Desert_5
+  - first:
+      213: 3754275978143009109
+    second: Building_Props_Desert_6
+  - first:
+      213: 5091727760070021239
+    second: Building_Props_Desert_7
+  - first:
+      213: 3051538604135212809
+    second: Building_Props_Desert_8
+  - first:
+      213: 367860720274605428
+    second: Building_Props_Desert_9
+  - first:
+      213: 7987558194192326682
+    second: Building_Props_Desert_10
+  - first:
+      213: -1933708698466974589
+    second: Building_Props_Desert_11
+  - first:
+      213: 7248369742831414344
+    second: Building_Props_Desert_12
+  - first:
+      213: -3426669337262796712
+    second: Building_Props_Desert_13
+  - first:
+      213: -315421750602058884
+    second: Building_Props_Desert_14
+  - first:
+      213: 8517958353303567618
+    second: Building_Props_Desert_15
+  - first:
+      213: -3211736892773961184
+    second: Building_Props_Desert_16
+  - first:
+      213: -6920135782868309648
+    second: Building_Props_Desert_17
+  - first:
+      213: -5415174046740934951
+    second: Building_Props_Desert_18
+  - first:
+      213: -5315003701887567854
+    second: Building_Props_Desert_19
+  - first:
+      213: -2041891563722945535
+    second: Building_Props_Desert_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Building_Props_Desert_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 353
+        width: 44
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 637286af486dd3b80800000000000000
+      internalID: -8413332662233061578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_1
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 353
+        width: 54
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdfc5290e6f559d00800000000000000
+      internalID: 978793420227465183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 280
+        width: 66
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c5af656737cf380800000000000000
+      internalID: -8936140608507323376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_3
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 259
+        width: 60
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 583f0ec9ca1f58850800000000000000
+      internalID: 6378770170908832645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 191
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e710daddec39b0d60800000000000000
+      internalID: 7857536491569611134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_5
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 193
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed02c779783a8270800000000000000
+      internalID: 8253471361461259759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_6
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 193
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5590ff17c1ed91430800000000000000
+      internalID: 3754275978143009109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_7
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 193
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77018ffab6379a640800000000000000
+      internalID: 5091727760070021239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 191
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 907eed5513e395a20800000000000000
+      internalID: 3051538604135212809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_9
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 191
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47589c64067ea1500800000000000000
+      internalID: 367860720274605428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 161
+        width: 46
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1028939bd189de60800000000000000
+      internalID: 7987558194192326682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_11
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 129
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3840bc81f261a25e0800000000000000
+      internalID: -1933708698466974589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_12
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 129
+        width: 16
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84ce72aa0e1679460800000000000000
+      internalID: 7248369742831414344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_13
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 159
+        width: 48
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8505abd94660270d0800000000000000
+      internalID: -3426669337262796712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_14
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 131
+        width: 18
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c73bee8c6956f9bf0800000000000000
+      internalID: -315421750602058884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_15
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 131
+        width: 18
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20dfa340efdd53670800000000000000
+      internalID: 8517958353303567618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 127
+        width: 46
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 022f032005e9d63d0800000000000000
+      internalID: -3211736892773961184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 127
+        width: 48
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0792aa08b2db6ff90800000000000000
+      internalID: -6920135782868309648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 47
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9de871335ef69d4b0800000000000000
+      internalID: -5415174046740934951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_19
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 11
+        width: 66
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 218fa111b405d36b0800000000000000
+      internalID: -5315003701887567854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Building_Props_Desert_20
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 47
+        width: 34
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10c4d62f07eb9a3e0800000000000000
+      internalID: -2041891563722945535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Building_Props_Desert_0: -8413332662233061578
+      Building_Props_Desert_1: 978793420227465183
+      Building_Props_Desert_10: 7987558194192326682
+      Building_Props_Desert_11: -1933708698466974589
+      Building_Props_Desert_12: 7248369742831414344
+      Building_Props_Desert_13: -3426669337262796712
+      Building_Props_Desert_14: -315421750602058884
+      Building_Props_Desert_15: 8517958353303567618
+      Building_Props_Desert_16: -3211736892773961184
+      Building_Props_Desert_17: -6920135782868309648
+      Building_Props_Desert_18: -5415174046740934951
+      Building_Props_Desert_19: -5315003701887567854
+      Building_Props_Desert_2: -8936140608507323376
+      Building_Props_Desert_20: -2041891563722945535
+      Building_Props_Desert_3: 6378770170908832645
+      Building_Props_Desert_4: 7857536491569611134
+      Building_Props_Desert_5: 8253471361461259759
+      Building_Props_Desert_6: 3754275978143009109
+      Building_Props_Desert_7: 5091727760070021239
+      Building_Props_Desert_8: 3051538604135212809
+      Building_Props_Desert_9: 367860720274605428
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

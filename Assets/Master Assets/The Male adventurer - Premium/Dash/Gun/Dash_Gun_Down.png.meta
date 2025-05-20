@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dash_Gun_Down_0: 4098724323240743287
+      Dash_Gun_Down_1: -7276762291528361482
+      Dash_Gun_Down_2: -5745986198235791339
+      Dash_Gun_Down_3: -61914884915387652
+      Dash_Gun_Down_4: 4616313875152807085
+      Dash_Gun_Down_5: 1238066145609859267
+      Dash_Gun_Down_6: 2928287692132375645
+      Dash_Gun_Down_7: -8445610179822377568
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

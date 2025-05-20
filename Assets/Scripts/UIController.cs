@@ -120,7 +120,7 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(mainMenuScene);
 
         Destroy(gameObject);
-        Destroy(PlayerController.instance.gameObject);
+        Destroy(Player.instance.gameObject);
         Destroy(GridInfo.instance.gameObject);
         Destroy(CropController.instance.gameObject);
         Destroy(TimeController.instance.gameObject);

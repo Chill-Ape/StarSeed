@@ -9,13 +9,16 @@ public class AreaSwitcher : MonoBehaviour
     [Header("Optional Start Point")]
     public Transform startPoint;
 
+    [Header("Player Components")]
+    public Player farmingController;
+
     void Start()
     {
-        if (PlayerPrefs.HasKey("Transition") && PlayerController.instance != null)
+        if (PlayerPrefs.HasKey("Transition") && Player.instance != null)
         {
             if (PlayerPrefs.GetString("Transition") == transitionName && startPoint != null)
             {
-                PlayerController.instance.transform.position = startPoint.position;
+                Player.instance.transform.position = startPoint.position;
                 PlayerPrefs.DeleteKey("Transition");
             }
         }

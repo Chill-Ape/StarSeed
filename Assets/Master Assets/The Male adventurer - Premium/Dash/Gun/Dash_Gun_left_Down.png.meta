@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dash_Gun_left_Down_0: -1039410799014117080
+      Dash_Gun_left_Down_1: 6780329216233523730
+      Dash_Gun_left_Down_2: -6380146151021511244
+      Dash_Gun_left_Down_3: -8542633733672674033
+      Dash_Gun_left_Down_4: 2258284100203693094
+      Dash_Gun_left_Down_5: 3425226208341449012
+      Dash_Gun_left_Down_6: -1003917352176320738
+      Dash_Gun_left_Down_7: 6677359976013507636
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

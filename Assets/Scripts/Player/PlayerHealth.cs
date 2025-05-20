@@ -1,23 +1,32 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
 
-private void Update()
+    private PlayerAnimations playerAnimations;
+
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        playerAnimations = GetComponent<PlayerAnimations>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
         {
             TakeDamage(1f);
         }
     }
+
     public void TakeDamage(float amount)
     {
         stats.Health -= amount;
-        if (stats.Health <= 0)
+        if (stats.Health <= 0f)
         {
             PlayerDead();
         }
@@ -25,6 +34,6 @@ private void Update()
 
     private void PlayerDead()
     {
-        Debug.Log("Player is dead");
+        playerAnimations.SetDeadAnimation();
     }
 }

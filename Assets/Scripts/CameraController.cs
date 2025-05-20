@@ -18,9 +18,9 @@ public class CameraController : MonoBehaviour
         // Try to find the player if target isn't set
         if (target == null)
         {
-            if (PlayerController.instance != null)
+            if (Player.instance != null)
             {
-                target = PlayerController.instance.transform;
+                target = Player.instance.transform;
             }
             else
             {

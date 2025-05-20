@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Idle_Gun_right_up_0: 7034206274023088170
+      Idle_Gun_right_up_1: -8613358581442280890
+      Idle_Gun_right_up_2: -5617352483649271225
+      Idle_Gun_right_up_3: -8907298547052898876
+      Idle_Gun_right_up_4: 4370055535101140883
+      Idle_Gun_right_up_5: 8483786739634735186
+      Idle_Gun_right_up_6: 6037660149876683847
+      Idle_Gun_right_up_7: -8070951253075342743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

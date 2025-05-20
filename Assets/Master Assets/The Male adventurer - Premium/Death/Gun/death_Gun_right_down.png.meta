@@ -347,7 +347,16 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      death_Gun_right_down_0: 6920387805101805522
+      death_Gun_right_down_1: 5388651422987012193
+      death_Gun_right_down_2: 4074710247488705054
+      death_Gun_right_down_3: -6258593402213250441
+      death_Gun_right_down_4: -6694236923266584792
+      death_Gun_right_down_5: -4332381838935391044
+      death_Gun_right_down_6: 3929510085923193532
+      death_Gun_right_down_7: -8823637308816346226
+      death_Gun_right_down_8: -6417704915010718385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

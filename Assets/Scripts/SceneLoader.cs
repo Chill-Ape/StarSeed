@@ -44,7 +44,7 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LoadSceneWithFade(string sceneName)
     {
 
-        PlayerController pc = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+        Player pc = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
         if (pc != null)
         {
             pc.HardFreeze();
@@ -130,7 +130,7 @@ public class SceneLoader : MonoBehaviour
         if (loadingScreen != null)
             loadingScreen.SetActive(false);
 
-            PlayerController pc = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
+            Player pc = GameObject.FindGameObjectWithTag("Player")?.GetComponent<Player>();
             if (pc != null)
             {
                 pc.Unfreeze();

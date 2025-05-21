@@ -3,18 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - idk
   - Water
   - UI
   - World Objects
   - Grid Blocker
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 
@@ -52,6 +53,9 @@ TagManager:
     locked: 0
   - name: Houses
     uniqueID: 1452327373
+    locked: 0
+  - name: Enemy
+    uniqueID: 2221566709
     locked: 0
   - name: Player
     uniqueID: 3319635281

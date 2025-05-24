@@ -53,24 +53,16 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetReviveAnimation()
     {
-        // First reset all states
         ResetAllTriggers();
-        
-        // Then trigger the revive animation
         animator.SetTrigger("Revive");
     }
 
     public void ResetAllTriggers()
     {
-        // Reset all triggers
         animator.ResetTrigger("Dead");
         animator.ResetTrigger("Revive");
-        
-        // Reset all bools
         animator.SetBool("Moving", false);
         animator.SetBool("Attacking", false);
-        
-        // Reset movement parameters
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", 0);
     }

@@ -70,10 +70,9 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = true;
         playerAnimations.SetAttackAnimation(true);
         
-        if (currentAttackPosition == null) yield break;
+        // Perform the appropriate attack based on weapon type
         if (CurrentWeapon.WeaponType == WeaponType.Magic)
         {
-            if (playerMana.CurrentMana < CurrentWeapon.RequiredMana) yield break;
             MagicAttack();
         }
         else
@@ -81,41 +80,41 @@ public class PlayerAttack : MonoBehaviour
             MeleeAttack();
         }
         
+        // Wait for the attack animation to complete
         yield return new WaitForSeconds(0.5f);
+        
         IsAttacking = false;
         playerAnimations.SetAttackAnimation(false);
-        yield return null;
     }
 
     private void MagicAttack()
     {
-        Quaternion rotation =  
-            Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
+        if (CurrentWeapon.ProjectilePrefab == null)
+        {
+            Debug.LogError($"ProjectilePrefab is not assigned to weapon: {CurrentWeapon.name}");
+            return;
+        }
+        
+        if (playerMana.CurrentMana < CurrentWeapon.RequiredMana) return;
+        
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
         Projectile projectile = Instantiate(CurrentWeapon.ProjectilePrefab, 
             currentAttackPosition.position, rotation);
-        projectile.Direction = Vector3.up;
+        projectile.Direction = GetFacingDirection();
         projectile.Damage = GetAttackDamage();
         playerMana.UseMana(CurrentWeapon.RequiredMana);
     }
     
     private void MeleeAttack()
     {
+        if (enemyTarget == null) return;
+        
         slashFX.transform.position = currentAttackPosition.position;
         slashFX.Play();
         
-        // Get direction to enemy
-        Vector2 directionToEnemy = (enemyTarget.transform.position - transform.position).normalized;
-        
-        // Get player's facing direction based on currentAttackRotation
-        Vector2 facingDirection = GetFacingDirection();
-        
-        // Calculate angle between facing direction and direction to enemy
-        float angle = Vector2.Angle(facingDirection, directionToEnemy);
-        
-        // Check if enemy is within range and in front of player (within 120 degrees)
         float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
         
-        if (currentDistanceToEnemy <= minDistanceMeleeAttack && angle <= 120f)
+        if (currentDistanceToEnemy <= minDistanceMeleeAttack)
         {
             enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
         }
@@ -124,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector2 GetFacingDirection()
     {
         // Convert currentAttackRotation to a direction vector
-        float angleInRadians = (currentAttackRotation + 90f) * Mathf.Deg2Rad; // Add 90 degrees to align with Unity's coordinate system
+        float angleInRadians = (currentAttackRotation - 90f) * Mathf.Deg2Rad; // Subtract 90 to align with Unity's coordinate system
         return new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
     }
 
@@ -148,11 +147,11 @@ public class PlayerAttack : MonoBehaviour
         {
             case > 0f:
                 currentAttackPosition = attackPositions[1];
-                currentAttackRotation = -90f;
+                currentAttackRotation = 0f; // Right
                 break;
             case < 0f:
                 currentAttackPosition = attackPositions[3];
-                currentAttackRotation = -270f;
+                currentAttackRotation = 180f; // Left
                 break;
         }
         
@@ -160,11 +159,11 @@ public class PlayerAttack : MonoBehaviour
         {
             case > 0f:
                 currentAttackPosition = attackPositions[0];
-                currentAttackRotation = 0f;
+                currentAttackRotation = 90f; // Up
                 break;
             case < 0f:
                 currentAttackPosition = attackPositions[2];
-                currentAttackRotation = -180f;
+                currentAttackRotation = 270f; // Down
                 break;
         }
     }

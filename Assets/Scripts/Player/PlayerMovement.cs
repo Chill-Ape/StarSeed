@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private float speed;
+    [SerializeField] private float acceleration = 50f; // Add acceleration for smoother movement
 
     public Vector2 MoveDirection => moveDirection;
     
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private Player player;
     private Rigidbody2D rb2D;
     private Vector2 moveDirection;
+    private Vector2 currentVelocity;
     
     public bool IsMoving { get; private set; }
     
@@ -24,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
         actions = new PlayerActions();
         rb2D = GetComponent<Rigidbody2D>();
         playerAnimations = GetComponent<PlayerAnimation>();
+        
+        // Configure Rigidbody2D for better movement
+        rb2D.gravityScale = 0f;
+        rb2D.linearDamping = 0f;
+        rb2D.interpolation = RigidbodyInterpolation2D.Interpolate;
+        rb2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
     
     private void Update()
@@ -39,7 +47,13 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         if (player.Stats.Health <= 0) return;
-        rb2D.MovePosition(rb2D.position + moveDirection * (speed * Time.fixedDeltaTime));
+        
+        // Smoothly interpolate to target velocity
+        Vector2 targetVelocity = moveDirection * speed;
+        currentVelocity = Vector2.Lerp(currentVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+        
+        // Apply movement
+        rb2D.linearVelocity = currentVelocity;
     }
     
     private void ReadMovement()
@@ -57,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         actions.Disable();
+        // Reset velocity when disabled
+        if (rb2D != null)
+        {
+            rb2D.linearVelocity = Vector2.zero;
+            currentVelocity = Vector2.zero;
+        }
     }
 
     private void UpdateAnimation()

@@ -131,38 +131,30 @@ public class GrowBlock : MonoBehaviour
 
     public void UpdateCropSprite()
     {
-
+        if (CropController.instance == null) return;
+        
         CropInfo activeCrop = CropController.instance.GetCropInfo(cropType);
+        if (activeCrop == null) return;
+        
         switch(currentStage)
-       {
-        case GrowthStage.planted:
+        {
+            case GrowthStage.planted:
+                cropSR.sprite = activeCrop.planted;
+                break;
 
-       // cropSR.sprite =cropPlanted;
-       cropSR.sprite = activeCrop.planted;
-        break;
+            case GrowthStage.growing1:
+                cropSR.sprite = activeCrop.growStage1;
+                break;
 
-        case GrowthStage.growing1:
+            case GrowthStage.growing2:
+                cropSR.sprite = activeCrop.growStage2;
+                break;
 
-       //  cropSR.sprite = cropGrowing1;
-       cropSR.sprite = activeCrop.growStage1;
-
-        break;
-
-        case GrowthStage.growing2:
-
-       // cropSR.sprite = cropGrowing2;
-       cropSR.sprite = activeCrop.growStage2;
-
-        break;
-
-        case GrowthStage.ripe:
-
-       // cropSR.sprite = cropRipe;
-       cropSR.sprite = activeCrop.ripe;
-
-        break;
-       }
-       UpdateGridInfo();
+            case GrowthStage.ripe:
+                cropSR.sprite = activeCrop.ripe;
+                break;
+        }
+        UpdateGridInfo();
     }
 
     public void AdvanceCrop()

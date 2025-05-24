@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 4900985803420644291}
   - component: {fileID: 795722356035895366}
   m_Layer: 8
-  m_Name: Reptile
+  m_Name: Cyclops
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: -2073400587
   m_SortingLayer: 3
   m_SortingOrder: 5
-  m_Sprite: {fileID: 650471458, guid: 7ae228dda5514c74c9e421d05112d405, type: 3}
+  m_Sprite: {fileID: 1928848664, guid: 328ef4792cb4f614dbc9f1b984ffe53e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

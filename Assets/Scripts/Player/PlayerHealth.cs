@@ -5,17 +5,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
     
-    private PlayerAnimations playerAnimations;
-    private bool isDead = false;
+    private PlayerAnimation playerAnimations;
+    public bool IsDead { get; private set; }
 
     private void Awake()
     {
-        playerAnimations = GetComponent<PlayerAnimations>();
+        playerAnimations = GetComponent<PlayerAnimation>();
     }
 
     private void Update()
     {
-        if (stats.Health <= 0f && !isDead)
+        if (stats.Health <= 0f && !IsDead)
         {
             PlayerDead();
         }
@@ -23,9 +23,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
-        if (stats.Health <= 0f || isDead) return;
+        if (stats.Health <= 0f || IsDead) return;
         stats.Health -= amount;
-        DamageManager.Instance.ShowDamageText(amount, transform);
+        DamageManager.Instance.ShowDamageText(amount, transform, false);
         if (stats.Health <= 0f)
         {
             stats.Health = 0f;
@@ -49,8 +49,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     
     private void PlayerDead()
     {
-        if (isDead) return;
-        isDead = true;
+        if (IsDead) return;
+        IsDead = true;
         
         // Stop all movement and actions
         GetComponent<PlayerMovement>().enabled = false;
@@ -70,17 +70,21 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ResetPlayer()
     {
-        isDead = false;
-        stats.ResetPlayer();
+        IsDead = false;
+        stats.Health = stats.MaxHealth;
         
         // Re-enable components
         GetComponent<PlayerMovement>().enabled = true;
         GetComponent<PlayerAttack>().enabled = true;
         
-        // Re-enable physics
-        GetComponent<Rigidbody2D>().isKinematic = false;
+        // Reset the Rigidbody2D
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.isKinematic = false;
         
-        // Reset animations
-        playerAnimations.ResetPlayer();
+        // Reset all animation triggers and states
+        playerAnimations.ResetAllTriggers();
+        playerAnimations.SetReviveAnimation();
+        playerAnimations.SetMoveBoolTransition(false);
+        playerAnimations.SetAttackAnimation(false);
     }
 }

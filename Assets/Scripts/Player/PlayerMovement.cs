@@ -10,18 +10,20 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveDirection => moveDirection;
     
-    private PlayerAnimations playerAnimations;
+    private PlayerAnimation playerAnimations;
     private PlayerActions actions;
     private Player player;
     private Rigidbody2D rb2D;
     private Vector2 moveDirection;
+    
+    public bool IsMoving { get; private set; }
     
     private void Awake()
     {
         player = GetComponent<Player>();
         actions = new PlayerActions();
         rb2D = GetComponent<Rigidbody2D>();
-        playerAnimations = GetComponent<PlayerAnimations>();
+        playerAnimations = GetComponent<PlayerAnimation>();
     }
     
     private void Update()
@@ -43,14 +45,8 @@ public class PlayerMovement : MonoBehaviour
     private void ReadMovement()
     {
         moveDirection = actions.Movement.Move.ReadValue<Vector2>().normalized;
-        if (moveDirection == Vector2.zero)
-        {
-            playerAnimations.SetMoveBoolTransition(false);
-            return;
-        }
-        
-        playerAnimations.SetMoveBoolTransition(true);
-        playerAnimations.SetMoveAnimation(moveDirection);
+        IsMoving = moveDirection != Vector2.zero;
+        playerAnimations.SetMoveBoolTransition(IsMoving);
     }
     
     private void OnEnable()
@@ -61,5 +57,17 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         actions.Disable();
+    }
+
+    private void UpdateAnimation()
+    {
+        playerAnimations.SetMoveBoolTransition(IsMoving);
+    }
+
+    private void UpdateMovement()
+    {
+        // ... other code ...
+        IsMoving = moveDirection != Vector2.zero; // Set the IsMoving property
+        // ... other code ...
     }
 }

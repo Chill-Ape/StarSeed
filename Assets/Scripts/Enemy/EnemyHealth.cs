@@ -39,7 +39,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         }
         else
         {
-            DamageManager.Instance.ShowDamageText(amount, transform);
+            DamageManager.Instance.ShowDamageText(amount, transform, true);
         }
     }
 }

@@ -13,25 +13,29 @@ public class PlayerAttack : MonoBehaviour
     [Header("Melee Config")]
     [SerializeField] private ParticleSystem slashFX;
     [SerializeField] private float minDistanceMeleeAttack;
+    [SerializeField] private float meleeAttackCooldown = 1f;
 
     public Weapon CurrentWeapon { get; set; }
     
     private PlayerActions actions;
-    private PlayerAnimations playerAnimations;
+    private PlayerAnimation playerAnimations;
     private PlayerMovement playerMovement;
     private PlayerMana playerMana;
     private EnemyBrain enemyTarget;
     private Coroutine attackCoroutine;
+    private float lastAttackTime;
 
     private Transform currentAttackPosition;
     private float currentAttackRotation;
     
+    public bool IsAttacking { get; private set; }
+
     private void Awake()
     {
         actions = new PlayerActions();
         playerMana = GetComponent<PlayerMana>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerAnimations = GetComponent<PlayerAnimations>();
+        playerAnimations = GetComponent<PlayerAnimation>();
     }
 
     private void Start()
@@ -48,16 +52,24 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         if (enemyTarget == null) return;
+        
+        if (Time.time - lastAttackTime < meleeAttackCooldown) return;
+        
         if (attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
         }
         
+        lastAttackTime = Time.time;
+        IsAttacking = true;
         attackCoroutine = StartCoroutine(IEAttack());
     }
 
     private IEnumerator IEAttack()
     {
+        IsAttacking = true;
+        playerAnimations.SetAttackAnimation(true);
+        
         if (currentAttackPosition == null) yield break;
         if (CurrentWeapon.WeaponType == WeaponType.Magic)
         {
@@ -69,9 +81,10 @@ public class PlayerAttack : MonoBehaviour
             MeleeAttack();
         }
         
-        playerAnimations.SetAttackAnimation(true);
         yield return new WaitForSeconds(0.5f);
+        IsAttacking = false;
         playerAnimations.SetAttackAnimation(false);
+        yield return null;
     }
 
     private void MagicAttack()
@@ -102,18 +115,9 @@ public class PlayerAttack : MonoBehaviour
         // Check if enemy is within range and in front of player (within 120 degrees)
         float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
         
-        // Debug logs to help understand what's happening
-        Debug.Log($"Distance to enemy: {currentDistanceToEnemy}, Max distance: {minDistanceMeleeAttack}");
-        Debug.Log($"Angle to enemy: {angle}, Facing direction: {facingDirection}, Direction to enemy: {directionToEnemy}");
-        
         if (currentDistanceToEnemy <= minDistanceMeleeAttack && angle <= 120f)
         {
             enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
-            Debug.Log("Hit enemy!");
-        }
-        else
-        {
-            Debug.Log("Missed enemy!");
         }
     }
 

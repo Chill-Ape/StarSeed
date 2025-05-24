@@ -18,7 +18,7 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-    public void ShowDamageText(float damageAmount, Transform parent)
+    public void ShowDamageText(float damageAmount, Transform parent, bool isPlayerDamage = false)
     {
         if (damageTextPrefab == null)
         {
@@ -40,7 +40,7 @@ public class DamageManager : MonoBehaviour
             if (tmp != null)
             {
                 tmp.fontSize = 36;
-                tmp.color = Color.red;
+                tmp.color = isPlayerDamage ? Color.white : Color.red;
                 tmp.fontStyle = FontStyles.Bold;
                 tmp.alignment = TextAlignmentOptions.Center;
             }

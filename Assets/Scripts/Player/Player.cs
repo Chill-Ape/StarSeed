@@ -10,12 +10,14 @@ public class Player : MonoBehaviour
     public PlayerMana PlayerMana { get; private set; }
     public PlayerStats Stats => stats;
 
-    private PlayerAnimations animations;
+    private PlayerAnimation playerAnimations;
+    private PlayerHealth playerHealth;
 
     private void Awake()
     {
          PlayerMana = GetComponent<PlayerMana>();
-         animations = GetComponent<PlayerAnimations>();
+         playerAnimations = GetComponent<PlayerAnimation>();
+         playerHealth = GetComponent<PlayerHealth>();
 
         if (instance == null)
         {
@@ -26,14 +28,13 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        animations = GetComponent<PlayerAnimations>();
+        playerAnimations = GetComponent<PlayerAnimation>();
     }
 
     public void ResetPlayer()
     {
         stats.ResetPlayer();
-        animations.ResetPlayer();
-        GetComponent<PlayerHealth>().ResetPlayer();
+        playerHealth.ResetPlayer();
     }
 
     public void SwitchSeed(CropController.CropType newSeed)

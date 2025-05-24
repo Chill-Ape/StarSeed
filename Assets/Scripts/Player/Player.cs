@@ -7,13 +7,16 @@ public class Player : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
-
+    public PlayerMana PlayerMana { get; private set; }
     public PlayerStats Stats => stats;
 
     private PlayerAnimations animations;
 
     private void Awake()
     {
+         PlayerMana = GetComponent<PlayerMana>();
+         animations = GetComponent<PlayerAnimations>();
+
         if (instance == null)
         {
             instance = this;
@@ -30,25 +33,26 @@ public class Player : MonoBehaviour
     {
         stats.ResetPlayer();
         animations.ResetPlayer();
+        GetComponent<PlayerHealth>().ResetPlayer();
     }
 
     public void SwitchSeed(CropController.CropType newSeed)
-{
-    // You can implement this when you add crop selection/planting logic
-    // For now, this just makes the code compile
-}
+    {
+        // You can implement this when you add crop selection/planting logic
+        // For now, this just makes the code compile
+    }
 
-// Freezes the player (e.g., to disable movement/input during scene transitions or menus)
-public void HardFreeze()
-{
-    // You can implement this to stop all player movement/input
-    // For now, this just makes the code compile
-}
+    // Freezes the player (e.g., to disable movement/input during scene transitions or menus)
+    public void HardFreeze()
+    {
+        // You can implement this to stop all player movement/input
+        // For now, this just makes the code compile
+    }
 
-// Unfreezes the player (restores movement/input)
-public void Unfreeze()
-{
-    // You can implement this to re-enable player control
-    // For now, this just makes the code compile
-}
+    // Unfreezes the player (restores movement/input)
+    public void Unfreeze()
+    {
+        // You can implement this to re-enable player control
+        // For now, this just makes the code compile
+    }
 }

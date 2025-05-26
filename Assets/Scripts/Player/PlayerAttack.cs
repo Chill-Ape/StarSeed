@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float meleeAttackCooldown = 1f;
 
     public Weapon CurrentWeapon { get; set; }
-    
+
     private PlayerActions actions;
     private PlayerAnimation playerAnimations;
     private PlayerMovement playerMovement;
@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
 
     private Transform currentAttackPosition;
     private float currentAttackRotation;
-    
+
     public bool IsAttacking { get; private set; }
 
     private void Awake()
@@ -70,14 +70,18 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = true;
         playerAnimations.SetAttackAnimation(true);
         
-        // Perform the appropriate attack based on weapon type
-        if (CurrentWeapon.WeaponType == WeaponType.Magic)
+        // Check if enemy still exists before attacking
+        if (enemyTarget != null)
         {
-            MagicAttack();
-        }
-        else
-        {
-            MeleeAttack();
+            // Perform the appropriate attack based on weapon type
+            if (CurrentWeapon.WeaponType == WeaponType.Magic)
+            {
+                MagicAttack();
+            }
+            else
+            {
+                MeleeAttack();
+            }
         }
         
         // Wait for the attack animation to complete
@@ -89,9 +93,21 @@ public class PlayerAttack : MonoBehaviour
 
     private void MagicAttack()
     {
+        if (CurrentWeapon == null)
+        {
+            Debug.LogError("CurrentWeapon is null!");
+            return;
+        }
+
         if (CurrentWeapon.ProjectilePrefab == null)
         {
             Debug.LogError($"ProjectilePrefab is not assigned to weapon: {CurrentWeapon.name}");
+            return;
+        }
+        
+        if (playerMana == null)
+        {
+            Debug.LogError("PlayerMana component is missing!");
             return;
         }
         
@@ -100,35 +116,54 @@ public class PlayerAttack : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
         Projectile projectile = Instantiate(CurrentWeapon.ProjectilePrefab, 
             currentAttackPosition.position, rotation);
-        projectile.Direction = GetFacingDirection();
+        projectile.Direction = Vector3.up;
         projectile.Damage = GetAttackDamage();
         playerMana.UseMana(CurrentWeapon.RequiredMana);
     }
-    
+
     private void MeleeAttack()
     {
         if (enemyTarget == null) return;
+        if (enemyTarget.transform == null) return;
+        if (currentAttackPosition == null) return;
+        if (slashFX == null) return;
         
-        // Store the target position before any operations
+        // Store the target position and damageable component before any operations
         Vector3 targetPosition = enemyTarget.transform.position;
+        IDamageable damageable = enemyTarget.GetComponent<IDamageable>();
         
         slashFX.transform.position = currentAttackPosition.position;
         slashFX.Play();
         
         float currentDistanceToEnemy = Vector3.Distance(targetPosition, transform.position);
         
-        // Calculate direction to enemy
+        // Get the direction to the enemy
         Vector2 directionToEnemy = (targetPosition - transform.position).normalized;
-        float angleToEnemy = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg;
-        if (angleToEnemy < 0) angleToEnemy += 360f;
         
-        // Check if player is facing the enemy (within 45 degrees)
-        bool isFacingEnemy = Mathf.Abs(Mathf.DeltaAngle(currentAttackRotation, angleToEnemy)) <= 45f;
+        // Get the player's facing direction
+        Vector2 facingDirection = Vector2.zero;
+        switch (currentAttackRotation)
+        {
+            case 0f: // Up
+                facingDirection = Vector2.up;
+                break;
+            case -90f: // Right
+                facingDirection = Vector2.right;
+                break;
+            case -180f: // Down
+                facingDirection = Vector2.down;
+                break;
+            case -270f: // Left
+                facingDirection = Vector2.left;
+                break;
+        }
+        
+        // Check if player is facing the enemy (using dot product)
+        float dotProduct = Vector2.Dot(facingDirection, directionToEnemy);
+        bool isFacingEnemy = dotProduct > 0.5f; // This means within about 60 degrees
         
         if (currentDistanceToEnemy <= minDistanceMeleeAttack && isFacingEnemy)
         {
-            // Get the damageable component before applying knockback
-            IDamageable damageable = enemyTarget.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(GetAttackDamage());
@@ -138,19 +173,19 @@ public class PlayerAttack : MonoBehaviour
             Vector3 knockbackDirection = Vector3.zero;
             
             // Determine primary knockback direction based on currentAttackRotation
-            if (currentAttackRotation == 0f) // Right
+            if (currentAttackRotation == -90f) // Right
             {
                 knockbackDirection = new Vector3(1f, Random.Range(-1f, 2f), 0f);
             }
-            else if (currentAttackRotation == 180f) // Left
+            else if (currentAttackRotation == -270f) // Left
             {
                 knockbackDirection = new Vector3(-1f, Random.Range(-1f, 2f), 0f);
             }
-            else if (currentAttackRotation == 90f) // Up
+            else if (currentAttackRotation == 0f) // Up
             {
                 knockbackDirection = new Vector3(Random.Range(-1f, 2f), 1f, 0f);
             }
-            else if (currentAttackRotation == 270f) // Down
+            else if (currentAttackRotation == -180f) // Down
             {
                 knockbackDirection = new Vector3(Random.Range(-1f, 2f), -1f, 0f);
             }
@@ -159,18 +194,11 @@ public class PlayerAttack : MonoBehaviour
             knockbackDirection.Normalize();
             
             // Check if enemy still exists before applying knockback
-            if (enemyTarget != null)
+            if (enemyTarget != null && enemyTarget.transform != null)
             {
                 enemyTarget.transform.position += knockbackDirection;
             }
         }
-    }
-
-    private Vector2 GetFacingDirection()
-    {
-        // Convert currentAttackRotation to a direction vector
-        float angleInRadians = (currentAttackRotation - 90f) * Mathf.Deg2Rad; // Subtract 90 to align with Unity's coordinate system
-        return new Vector2(Mathf.Cos(angleInRadians), Mathf.Sin(angleInRadians));
     }
 
     private float GetAttackDamage()
@@ -185,7 +213,7 @@ public class PlayerAttack : MonoBehaviour
 
         return damage;
     }
-    
+
     private void GetFirePosition()
     {
         Vector2 moveDirection = playerMovement.MoveDirection;
@@ -193,11 +221,11 @@ public class PlayerAttack : MonoBehaviour
         {
             case > 0f:
                 currentAttackPosition = attackPositions[1];
-                currentAttackRotation = 0f; // Right
+                currentAttackRotation = -90f;
                 break;
             case < 0f:
                 currentAttackPosition = attackPositions[3];
-                currentAttackRotation = 180f; // Left
+                currentAttackRotation = -270f;
                 break;
         }
         
@@ -205,15 +233,15 @@ public class PlayerAttack : MonoBehaviour
         {
             case > 0f:
                 currentAttackPosition = attackPositions[0];
-                currentAttackRotation = 90f; // Up
+                currentAttackRotation = 0f;
                 break;
             case < 0f:
                 currentAttackPosition = attackPositions[2];
-                currentAttackRotation = 270f; // Down
+                currentAttackRotation = -180f;
                 break;
         }
     }
-    
+
     private void EnemySelectedCallback(EnemyBrain enemySelected)
     {
         enemyTarget = enemySelected;
@@ -223,7 +251,7 @@ public class PlayerAttack : MonoBehaviour
     {
         enemyTarget = null;
     }
-    
+
     private void OnEnable()
     {
         actions.Enable();

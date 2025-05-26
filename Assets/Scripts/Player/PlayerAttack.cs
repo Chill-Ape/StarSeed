@@ -15,6 +15,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float minDistanceMeleeAttack;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
+    [Header("Dodge Config")]
+    [SerializeField] private float dodgeDistance = 1f;
+    [SerializeField] private float dodgeDuration = 0.2f;
+    [SerializeField] private float dodgeHeight = 0.5f;
+    private bool isDodging = false;
+    private bool isBlocking = false;
+
+    [Header("Block Config")]
+    [SerializeField] private float blockDuration = 0.5f;
+    [SerializeField] private float damageReduction = 0.75f;
+    [SerializeField] private ParticleSystem blockEffect;
+
     public Weapon CurrentWeapon { get; set; }
 
     private PlayerActions actions;
@@ -30,6 +42,8 @@ public class PlayerAttack : MonoBehaviour
 
     public bool IsAttacking { get; private set; }
 
+    private Coroutine blockCoroutine;
+
     private void Awake()
     {
         actions = new PlayerActions();
@@ -42,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
     {
         CurrentWeapon = initialWeapon;
         actions.Attack.ClickAttack.performed += ctx => Attack();
+
     }
 
     private void Update()
@@ -49,9 +64,9 @@ public class PlayerAttack : MonoBehaviour
         GetFirePosition();
     }
 
-    private void Attack()
+    public void Attack()
     {
-        if (enemyTarget == null) return;
+        if (isDodging || isBlocking) return; // Can't attack while dodging or blocking
         
         if (Time.time - lastAttackTime < meleeAttackCooldown) return;
         
@@ -70,18 +85,14 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = true;
         playerAnimations.SetAttackAnimation(true);
         
-        // Check if enemy still exists before attacking
-        if (enemyTarget != null)
+        // Perform the appropriate attack based on weapon type
+        if (CurrentWeapon.WeaponType == WeaponType.Magic)
         {
-            // Perform the appropriate attack based on weapon type
-            if (CurrentWeapon.WeaponType == WeaponType.Magic)
-            {
-                MagicAttack();
-            }
-            else
-            {
-                MeleeAttack();
-            }
+            MagicAttack();
+        }
+        else
+        {
+            MeleeAttack();
         }
         
         // Wait for the attack animation to complete
@@ -123,17 +134,37 @@ public class PlayerAttack : MonoBehaviour
 
     private void MeleeAttack()
     {
-        if (enemyTarget == null) return;
-        if (enemyTarget.transform == null) return;
         if (currentAttackPosition == null) return;
         if (slashFX == null) return;
         
-        // Store the target position and damageable component before any operations
-        Vector3 targetPosition = enemyTarget.transform.position;
-        IDamageable damageable = enemyTarget.GetComponent<IDamageable>();
-        
+        // Always play the slash effect
         slashFX.transform.position = currentAttackPosition.position;
         slashFX.Play();
+        
+        // Find the closest enemy in range
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, minDistanceMeleeAttack);
+        EnemyBrain closestEnemy = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (Collider2D collider in colliders)
+        {
+            EnemyBrain enemy = collider.GetComponent<EnemyBrain>();
+            if (enemy != null)
+            {
+                float distance = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = enemy;
+                }
+            }
+        }
+
+        if (closestEnemy == null) return;
+        
+        // Store the target position and damageable component before any operations
+        Vector3 targetPosition = closestEnemy.transform.position;
+        IDamageable damageable = closestEnemy.GetComponent<IDamageable>();
         
         float currentDistanceToEnemy = Vector3.Distance(targetPosition, transform.position);
         
@@ -193,11 +224,42 @@ public class PlayerAttack : MonoBehaviour
             // Normalize the knockback direction to ensure consistent distance
             knockbackDirection.Normalize();
             
+            // Apply the weapon's knockback force
+            knockbackDirection *= CurrentWeapon.KnockbackForce;
+            
             // Check if enemy still exists before applying knockback
-            if (enemyTarget != null && enemyTarget.transform != null)
+            if (closestEnemy != null && closestEnemy.transform != null)
             {
-                enemyTarget.transform.position += knockbackDirection;
+                StartCoroutine(KnockbackCoroutine(closestEnemy, knockbackDirection));
             }
+        }
+    }
+
+    private IEnumerator KnockbackCoroutine(EnemyBrain enemy, Vector3 knockbackDirection)
+    {
+        float knockbackDuration = 0.2f; // Duration of the knockback animation
+        float elapsedTime = 0f;
+        Vector3 startPosition = enemy.transform.position;
+        Vector3 targetPosition = startPosition + knockbackDirection;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            if (enemy == null || enemy.transform == null) yield break;
+
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / knockbackDuration;
+            
+            // Use smoothstep for a more natural movement
+            t = t * t * (3f - 2f * t);
+            
+            enemy.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+
+        // Ensure the enemy ends up exactly at the target position
+        if (enemy != null && enemy.transform != null)
+        {
+            enemy.transform.position = targetPosition;
         }
     }
 
@@ -209,6 +271,12 @@ public class PlayerAttack : MonoBehaviour
         if (randomPerc <= stats.CriticalChance)
         {
             damage += damage * (stats.CriticalDamage / 100f);
+        }
+
+        // Apply damage reduction if blocking
+        if (isBlocking)
+        {
+            damage *= (1f - damageReduction);
         }
 
         return damage;
@@ -266,5 +334,104 @@ public class PlayerAttack : MonoBehaviour
         SelectionManager.OnEnemySelectedEvent -= EnemySelectedCallback;
         SelectionManager.OnNoSelectionEvent -= NoEnemySelectionCallback;
         EnemyHealth.OnEnemyDeadEvent -= NoEnemySelectionCallback;
+    }
+
+    public void InitializeDodgeSettings(float distance, float duration, float height)
+    {
+        dodgeDistance = distance;
+        dodgeDuration = duration;
+        dodgeHeight = height;
+    }
+
+    public void InitializeBlockSettings(float duration, float reduction, ParticleSystem effect)
+    {
+        blockDuration = duration;
+        damageReduction = reduction;
+        blockEffect = effect;
+    }
+
+    public void Block()
+    {
+        if (isDodging) return; // Can't block while dodging
+        
+        isBlocking = true;
+        if (blockEffect != null)
+        {
+            blockEffect.Play();
+        }
+
+        // Stop any existing block coroutine
+        if (blockCoroutine != null)
+        {
+            StopCoroutine(blockCoroutine);
+        }
+        
+        // Start new block coroutine
+        blockCoroutine = StartCoroutine(BlockCoroutine());
+    }
+
+    private IEnumerator BlockCoroutine()
+    {
+        yield return new WaitForSeconds(blockDuration);
+        isBlocking = false;
+        if (blockEffect != null)
+        {
+            blockEffect.Stop();
+        }
+    }
+
+    public void Dodge()
+    {
+        if (isDodging || isBlocking) return; // Can't dodge while already dodging or blocking
+        
+        Vector3 dodgeDirection = GetDodgeDirection();
+        StartCoroutine(DodgeCoroutine(dodgeDirection));
+    }
+
+    private Vector3 GetDodgeDirection()
+    {
+        // Get the opposite direction of where the player is facing
+        switch (currentAttackRotation)
+        {
+            case 0f: // Up
+                return Vector3.down;
+            case -90f: // Right
+                return Vector3.left;
+            case -180f: // Down
+                return Vector3.up;
+            case -270f: // Left
+                return Vector3.right;
+            default:
+                return Vector3.zero;
+        }
+    }
+
+    private IEnumerator DodgeCoroutine(Vector3 direction)
+    {
+        isDodging = true;
+        float elapsedTime = 0f;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = startPosition + (direction * dodgeDistance);
+
+        while (elapsedTime < dodgeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / dodgeDuration;
+            
+            // Use smoothstep for a more natural movement
+            t = t * t * (3f - 2f * t);
+            
+            // Add a parabolic arc to the movement
+            float height = Mathf.Sin(t * Mathf.PI) * dodgeHeight;
+            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
+            currentPosition.y += height;
+            
+            transform.position = currentPosition;
+            yield return null;
+        }
+
+        // Ensure we end up exactly at the target position
+        transform.position = targetPosition;
+        isDodging = false;
     }
 }

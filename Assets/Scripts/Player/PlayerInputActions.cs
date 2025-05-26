@@ -17,6 +17,12 @@ public class PlayerInputActions : MonoBehaviour
     private InputAction dodgeAction;
     private PlayerAttack playerAttack;
 
+    // Store event handlers as fields to prevent allocations
+    private System.Action<InputAction.CallbackContext> onAttackPerformed;
+    private System.Action<InputAction.CallbackContext> onBlockPerformed;
+    private System.Action<InputAction.CallbackContext> onBlockCanceled;
+    private System.Action<InputAction.CallbackContext> onDodgePerformed;
+
     private void Awake()
     {
         // Create the input actions
@@ -39,6 +45,12 @@ public class PlayerInputActions : MonoBehaviour
         {
             Debug.Log("Block effect is properly assigned");
         }
+
+        // Initialize event handlers
+        onAttackPerformed = ctx => playerAttack.Attack();
+        onBlockPerformed = ctx => playerAttack.StartBlock();
+        onBlockCanceled = ctx => playerAttack.EndBlock();
+        onDodgePerformed = ctx => playerAttack.Dodge();
     }
 
     private void OnEnable()
@@ -48,20 +60,20 @@ public class PlayerInputActions : MonoBehaviour
         blockAction.Enable();
         dodgeAction.Enable();
 
-        // Subscribe to the actions
-        clickAttackAction.performed += ctx => playerAttack.Attack();
-        blockAction.performed += ctx => playerAttack.StartBlock();
-        blockAction.canceled += ctx => playerAttack.EndBlock();
-        dodgeAction.performed += ctx => playerAttack.Dodge();
+        // Subscribe to the actions using stored handlers
+        clickAttackAction.performed += onAttackPerformed;
+        blockAction.performed += onBlockPerformed;
+        blockAction.canceled += onBlockCanceled;
+        dodgeAction.performed += onDodgePerformed;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the actions
-        clickAttackAction.performed -= ctx => playerAttack.Attack();
-        blockAction.performed -= ctx => playerAttack.StartBlock();
-        blockAction.canceled -= ctx => playerAttack.EndBlock();
-        dodgeAction.performed -= ctx => playerAttack.Dodge();
+        // Unsubscribe from the actions using stored handlers
+        clickAttackAction.performed -= onAttackPerformed;
+        blockAction.performed -= onBlockPerformed;
+        blockAction.canceled -= onBlockCanceled;
+        dodgeAction.performed -= onDodgePerformed;
 
         // Disable the actions
         clickAttackAction.Disable();

@@ -22,6 +22,11 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private AudioClip attackHitSound; // New field for attack hit sound
 
+    [Header("Block Settings")]
+    [SerializeField] private float damageReduction = 0.75f;
+    [SerializeField] private ParticleSystem blockEffect;
+    [SerializeField] private float blockKnockbackForce = 2f; // Add this field for block knockback strength
+
     public Weapon CurrentWeapon { get; set; }
 
     private PlayerActions actions;
@@ -47,8 +52,6 @@ public class PlayerAttack : MonoBehaviour
 
     private float dodgeHeight;
 
-    private float damageReduction;
-    private ParticleSystem blockEffect;
     private float blockDuration = 0.5f; // Make this configurable in the inspector if needed
 
     private void Awake()
@@ -389,7 +392,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public float ProcessDamage(float damage)
+    public float ProcessDamage(float damage, Transform attacker)
     {
         if (isBlocking)
         {
@@ -400,18 +403,52 @@ public class PlayerAttack : MonoBehaviour
             }
             if (blockEffect != null)
             {
-                blockEffect.transform.position = transform.position; // Set effect position to player
+                blockEffect.transform.position = transform.position;
                 blockEffect.Play();
             }
+
+            // Apply knockback to the attacker
+            if (attacker != null)
+            {
+                StartCoroutine(KnockbackAttacker(attacker));
+            }
+
             return Mathf.Round(damage * (1f - damageReduction));
         }
         return damage;
     }
 
-    private void Die()
+    private IEnumerator KnockbackAttacker(Transform attacker)
     {
-        Debug.Log("Player died!");
-        Destroy(gameObject);
+        if (attacker == null) yield break;
+
+        float knockbackDuration = 0.2f;
+        float elapsedTime = 0f;
+        Vector3 startPosition = attacker.position;
+        
+        // Calculate knockback direction (away from player)
+        Vector3 knockbackDirection = (attacker.position - transform.position).normalized;
+        Vector3 targetPosition = startPosition + knockbackDirection * blockKnockbackForce;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            if (attacker == null) yield break;
+
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / knockbackDuration;
+            
+            // Use smoothstep for a more natural movement
+            t = t * t * (3f - 2f * t);
+            
+            attacker.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+
+        // Ensure the attacker ends up exactly at the target position
+        if (attacker != null)
+        {
+            attacker.position = targetPosition;
+        }
     }
 
     public void Dodge()

@@ -87,7 +87,7 @@ public class ActionAttack : FSMAction
             if (playerHealth != null)
             {
                 float damage = GetRandomDamage();
-                playerHealth.TakeDamage(damage);
+                playerHealth.TakeDamage(damage, transform);
                 
                 // Only play attack hit sound if player is not blocking
                 if (!playerHealth.IsBlocking() && attackHitSound != null && audioSource != null)

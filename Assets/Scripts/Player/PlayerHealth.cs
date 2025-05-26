@@ -25,13 +25,18 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
+        TakeDamage(amount, null);
+    }
+
+    public void TakeDamage(float amount, Transform attacker)
+    {
         if (stats.Health <= 0f || IsDead) return;
         
         // Get the PlayerAttack component to check blocking state
         if (playerAttack != null)
         {
-            // Let PlayerAttack handle the damage reduction
-            float finalDamage = playerAttack.ProcessDamage(amount);
+            // Let PlayerAttack handle the damage reduction and knockback
+            float finalDamage = playerAttack.ProcessDamage(amount, attacker);
             stats.Health -= finalDamage;
             DamageManager.Instance.ShowDamageText(finalDamage, transform, false);
         }

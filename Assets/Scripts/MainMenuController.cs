@@ -22,7 +22,6 @@ public class MainMenuController : MonoBehaviour
    {
         Application.Quit();
 
-        Debug.Log("Quitting the Game");
         AudioManager.instance.PlaySFXPitchAdjusted(5);
    }
 

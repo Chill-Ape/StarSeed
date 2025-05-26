@@ -9,7 +9,6 @@ public class PlayerInputActions : MonoBehaviour
     [SerializeField] private float dodgeHeight = 0.5f;
 
     [Header("Block Settings")]
-    [SerializeField] private float blockDuration = 0.5f;
     [SerializeField] private float damageReduction = 0.75f;
     [SerializeField] private ParticleSystem blockEffect;
 
@@ -22,14 +21,24 @@ public class PlayerInputActions : MonoBehaviour
     {
         // Create the input actions
         clickAttackAction = new InputAction("ClickAttack", binding: "<Mouse>/leftButton");
-        blockAction = new InputAction("Block", binding: "<Keyboard>/b");
-        dodgeAction = new InputAction("Dodge", binding: "<Keyboard>/leftShift");  // Make sure this is correct
+        blockAction = new InputAction("Block", binding: "<Mouse>/rightButton");
+        dodgeAction = new InputAction("Dodge", binding: "<Keyboard>/leftShift");
 
         playerAttack = GetComponent<PlayerAttack>();
         
         // Pass the settings to PlayerAttack
         playerAttack.InitializeDodgeSettings(dodgeDistance, dodgeDuration, dodgeHeight);
-        playerAttack.InitializeBlockSettings(blockDuration, damageReduction, blockEffect);
+        playerAttack.InitializeBlockSettings(damageReduction, blockEffect);
+        
+        // Debug log to check if block effect is assigned
+        if (blockEffect == null)
+        {
+            Debug.LogWarning("Block effect is not assigned in PlayerInputActions!");
+        }
+        else
+        {
+            Debug.Log("Block effect is properly assigned");
+        }
     }
 
     private void OnEnable()
@@ -41,7 +50,8 @@ public class PlayerInputActions : MonoBehaviour
 
         // Subscribe to the actions
         clickAttackAction.performed += ctx => playerAttack.Attack();
-        blockAction.performed += ctx => playerAttack.Block();
+        blockAction.performed += ctx => playerAttack.StartBlock();
+        blockAction.canceled += ctx => playerAttack.EndBlock();
         dodgeAction.performed += ctx => playerAttack.Dodge();
     }
 
@@ -49,7 +59,8 @@ public class PlayerInputActions : MonoBehaviour
     {
         // Unsubscribe from the actions
         clickAttackAction.performed -= ctx => playerAttack.Attack();
-        blockAction.performed -= ctx => playerAttack.Block();
+        blockAction.performed -= ctx => playerAttack.StartBlock();
+        blockAction.canceled -= ctx => playerAttack.EndBlock();
         dodgeAction.performed -= ctx => playerAttack.Dodge();
 
         // Disable the actions

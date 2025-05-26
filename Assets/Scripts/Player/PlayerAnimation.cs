@@ -66,4 +66,9 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetFloat("MoveX", 0);
         animator.SetFloat("MoveY", 0);
     }
+
+    public void SetBlockingAnimation(bool value)
+    {
+        animator.SetBool("Blocking", value);
+    }
 }

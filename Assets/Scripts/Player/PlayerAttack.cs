@@ -15,11 +15,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float minDistanceMeleeAttack;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
-    [Header("Block Config")]
-    [SerializeField] private float blockDuration = 0.5f;
-    [SerializeField] private float damageReduction = 0.75f;
-    [SerializeField] private ParticleSystem blockEffect;
-
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 100f;
     private float health;
@@ -47,6 +42,9 @@ public class PlayerAttack : MonoBehaviour
     private bool isBlocking = false;
 
     private float dodgeHeight;
+
+    private float damageReduction;
+    private ParticleSystem blockEffect;
 
     private void Awake()
     {
@@ -278,12 +276,6 @@ public class PlayerAttack : MonoBehaviour
             damage += damage * (stats.CriticalDamage / 100f);
         }
 
-        // Apply damage reduction if blocking
-        if (isBlocking)
-        {
-            damage *= (1f - damageReduction);
-        }
-
         return damage;
     }
 
@@ -348,9 +340,8 @@ public class PlayerAttack : MonoBehaviour
         dodgeHeight = height;
     }
 
-    public void InitializeBlockSettings(float duration, float reduction, ParticleSystem effect)
+    public void InitializeBlockSettings(float reduction, ParticleSystem effect)
     {
-        blockDuration = duration;
         damageReduction = reduction;
         blockEffect = effect;
     }
@@ -377,7 +368,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator BlockCoroutine()
     {
-        yield return new WaitForSeconds(blockDuration);
+        yield return new WaitForSeconds(0.5f);
         isBlocking = false;
         if (blockEffect != null)
         {
@@ -448,32 +439,83 @@ public class PlayerAttack : MonoBehaviour
         isDodging = false;
     }
 
-    public void OnTakeDamage(float damage, Vector3 attackDirection)
+    public float ProcessDamage(float damage)
     {
+        Debug.Log($"Processing damage: {damage}, Blocking: {isBlocking}");
+        
         if (isDodging)
         {
             Debug.Log("Dodged the attack!");
-            return; // Don't take damage if dodging
+            return 0f; // No damage if dodging
         }
 
         if (isBlocking)
         {
-            damage *= (1f - damageReduction);
-            Debug.Log($"Blocked attack! Reduced damage to: {damage}");
+            Debug.Log($"Blocking! Original damage: {damage}, Damage reduction: {damageReduction}");
+            
+            // Play block effect when actually blocking an attack
+            if (blockEffect != null)
+            {
+                Debug.Log("Playing block effect");
+                blockEffect.Play();
+            }
+            else
+            {
+                Debug.Log("Block effect is null!");
+            }
+            
+            float reducedDamage = damage * (1f - damageReduction);
+            // Round to nearest whole number
+            reducedDamage = Mathf.Round(reducedDamage);
+            Debug.Log($"Blocked attack! Original damage: {damage}, Reduced damage: {reducedDamage}");
+            return reducedDamage;
         }
 
-        health -= damage;
-        Debug.Log($"Player took {damage} damage. Health remaining: {health}");
-
-        if (health <= 0)
-        {
-            Die();
-        }
+        // Round to nearest whole number for non-blocked damage
+        return Mathf.Round(damage);
     }
 
     private void Die()
     {
         Debug.Log("Player died!");
         Destroy(gameObject);
+    }
+
+    public void StartBlock()
+    {
+        if (isDodging) return; // Can't block while dodging
+        
+        isBlocking = true;
+        Debug.Log("Blocking started");
+        
+        // Disable movement while blocking
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = false;
+        }
+        
+        // Set the blocking animation
+        if (playerAnimations != null)
+        {
+            playerAnimations.SetBlockingAnimation(true);
+        }
+    }
+
+    public void EndBlock()
+    {
+        isBlocking = false;
+        Debug.Log("Blocking ended");
+        
+        // Re-enable movement when blocking ends
+        if (playerMovement != null)
+        {
+            playerMovement.enabled = true;
+        }
+        
+        // End the blocking animation
+        if (playerAnimations != null)
+        {
+            playerAnimations.SetBlockingAnimation(false);
+        }
     }
 }

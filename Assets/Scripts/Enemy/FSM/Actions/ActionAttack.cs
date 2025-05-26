@@ -94,7 +94,13 @@ public class ActionAttack : FSMAction
             IDamageable player = enemyBrain.Player.GetComponent<IDamageable>();
             if (player != null)
             {
-                player.TakeDamage(GetRandomDamage());
+                float damage = GetRandomDamage();
+                Debug.Log($"Enemy attempting to deal {damage} damage to player");
+                player.TakeDamage(damage);
+            }
+            else
+            {
+                Debug.LogError("Player component not found!");
             }
         }
         else

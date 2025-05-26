@@ -15,17 +15,14 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float minDistanceMeleeAttack;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
-    [Header("Dodge Config")]
-    [SerializeField] private float dodgeDistance = 1f;
-    [SerializeField] private float dodgeDuration = 0.2f;
-    [SerializeField] private float dodgeHeight = 0.5f;
-    private bool isDodging = false;
-    private bool isBlocking = false;
-
     [Header("Block Config")]
     [SerializeField] private float blockDuration = 0.5f;
     [SerializeField] private float damageReduction = 0.75f;
     [SerializeField] private ParticleSystem blockEffect;
+
+    [Header("Health Settings")]
+    [SerializeField] private float maxHealth = 100f;
+    private float health;
 
     public Weapon CurrentWeapon { get; set; }
 
@@ -44,6 +41,13 @@ public class PlayerAttack : MonoBehaviour
 
     private Coroutine blockCoroutine;
 
+    private float dodgeDistance;
+    private float dodgeDuration;
+    private bool isDodging = false;
+    private bool isBlocking = false;
+
+    private float dodgeHeight;
+
     private void Awake()
     {
         actions = new PlayerActions();
@@ -54,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        health = maxHealth;
         CurrentWeapon = initialWeapon;
         actions.Attack.ClickAttack.performed += ctx => Attack();
 
@@ -382,7 +387,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Dodge()
     {
-        if (isDodging || isBlocking) return; // Can't dodge while already dodging or blocking
+        if (isDodging) return; // Can't dodge while already dodging
         
         Vector3 dodgeDirection = GetDodgeDirection();
         StartCoroutine(DodgeCoroutine(dodgeDirection));
@@ -413,25 +418,62 @@ public class PlayerAttack : MonoBehaviour
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + (direction * dodgeDistance);
 
+        // Check if we're moving horizontally (left/right) or vertically (up/down)
+        bool isHorizontalDodge = Mathf.Abs(direction.x) > Mathf.Abs(direction.y);
+
         while (elapsedTime < dodgeDuration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / dodgeDuration;
             
-            // Use smoothstep for a more natural movement
-            t = t * t * (3f - 2f * t);
+            if (isHorizontalDodge)
+            {
+                // For left/right dodges, add the jump effect
+                float jumpHeight = Mathf.Sin(t * Mathf.PI) * dodgeHeight;
+                Vector3 newPosition = startPosition + (direction * dodgeDistance * t);
+                newPosition.y = startPosition.y + jumpHeight;
+                transform.position = newPosition;
+            }
+            else
+            {
+                // For up/down dodges, just slide smoothly
+                transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            }
             
-            // Add a parabolic arc to the movement
-            float height = Mathf.Sin(t * Mathf.PI) * dodgeHeight;
-            Vector3 currentPosition = Vector3.Lerp(startPosition, targetPosition, t);
-            currentPosition.y += height;
-            
-            transform.position = currentPosition;
             yield return null;
         }
 
         // Ensure we end up exactly at the target position
         transform.position = targetPosition;
         isDodging = false;
+    }
+
+    public void OnTakeDamage(float damage, Vector3 attackDirection)
+    {
+        if (isDodging)
+        {
+            Debug.Log("Dodged the attack!");
+            return; // Don't take damage if dodging
+        }
+
+        if (isBlocking)
+        {
+            damage *= 0.5f;
+            Debug.Log($"Blocked attack! Reduced damage to: {damage}");
+        }
+
+        health -= damage;
+        Debug.Log($"Player took {damage} damage. Health remaining: {health}");
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died!");
+        Destroy(gameObject);
     }
 }

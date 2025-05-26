@@ -4,7 +4,8 @@ using System.Collections;
 public class ActionAttack : FSMAction
 {
     [Header("Config")]
-    [SerializeField] private float damage;
+    [SerializeField] private float damage = 10f;  // Base damage
+    [SerializeField] private float damageVariation = 0.25f;  // 25% variation
     [SerializeField] private float timeBtwAttacks;
     [SerializeField] private float windupDuration = 0.2f;  // How long to flash red
     [SerializeField] private Color windupColor = Color.red;  // The red flash color
@@ -26,6 +27,13 @@ public class ActionAttack : FSMAction
         {
             originalColor = spriteRenderer.color;
         }
+    }
+
+    private float GetRandomDamage()
+    {
+        float minDamage = damage * (1f - damageVariation);
+        float maxDamage = damage * (1f + damageVariation);
+        return Mathf.Round(Random.Range(minDamage, maxDamage));
     }
 
     public override void Act()
@@ -78,9 +86,9 @@ public class ActionAttack : FSMAction
         // Ensure we end up exactly at the target position
         transform.position = dashTarget;
 
-        // Deal damage
+        // Deal damage with variation
         IDamageable player = enemyBrain.Player.GetComponent<IDamageable>();
-        player.TakeDamage(damage);
+        player.TakeDamage(GetRandomDamage());
         timer = timeBtwAttacks;
 
         // Reset color

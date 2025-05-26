@@ -4,14 +4,14 @@ using UnityEngine.InputSystem;
 public class PlayerInputActions : MonoBehaviour
 {
     [Header("Dodge Settings")]
-    [SerializeField] private float dodgeDistance = 1f;
-    [SerializeField] private float dodgeDuration = 0.2f;
-    [SerializeField] private float dodgeHeight = 0.5f; // How high the player jumps during dodge
+    [SerializeField] private float dodgeDistance = 2f;
+    [SerializeField] private float dodgeDuration = 0.5f;
+    [SerializeField] private float dodgeHeight = 0.5f;
 
     [Header("Block Settings")]
     [SerializeField] private float blockDuration = 0.5f;
-    [SerializeField] private float damageReduction = 0.75f; // 75% damage reduction
-    [SerializeField] private ParticleSystem blockEffect; // Drag your block animation here
+    [SerializeField] private float damageReduction = 0.75f;
+    [SerializeField] private ParticleSystem blockEffect;
 
     private InputAction clickAttackAction;
     private InputAction blockAction;
@@ -23,7 +23,7 @@ public class PlayerInputActions : MonoBehaviour
         // Create the input actions
         clickAttackAction = new InputAction("ClickAttack", binding: "<Mouse>/leftButton");
         blockAction = new InputAction("Block", binding: "<Keyboard>/b");
-        dodgeAction = new InputAction("Dodge", binding: "<Keyboard>/n");
+        dodgeAction = new InputAction("Dodge", binding: "<Keyboard>/leftShift");  // Make sure this is correct
 
         playerAttack = GetComponent<PlayerAttack>();
         

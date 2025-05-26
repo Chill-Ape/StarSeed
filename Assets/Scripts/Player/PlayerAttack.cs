@@ -109,14 +109,60 @@ public class PlayerAttack : MonoBehaviour
     {
         if (enemyTarget == null) return;
         
+        // Store the target position before any operations
+        Vector3 targetPosition = enemyTarget.transform.position;
+        
         slashFX.transform.position = currentAttackPosition.position;
         slashFX.Play();
         
-        float currentDistanceToEnemy = Vector3.Distance(enemyTarget.transform.position, transform.position);
+        float currentDistanceToEnemy = Vector3.Distance(targetPosition, transform.position);
         
-        if (currentDistanceToEnemy <= minDistanceMeleeAttack)
+        // Calculate direction to enemy
+        Vector2 directionToEnemy = (targetPosition - transform.position).normalized;
+        float angleToEnemy = Mathf.Atan2(directionToEnemy.y, directionToEnemy.x) * Mathf.Rad2Deg;
+        if (angleToEnemy < 0) angleToEnemy += 360f;
+        
+        // Check if player is facing the enemy (within 45 degrees)
+        bool isFacingEnemy = Mathf.Abs(Mathf.DeltaAngle(currentAttackRotation, angleToEnemy)) <= 45f;
+        
+        if (currentDistanceToEnemy <= minDistanceMeleeAttack && isFacingEnemy)
         {
-            enemyTarget.GetComponent<IDamageable>().TakeDamage(GetAttackDamage());
+            // Get the damageable component before applying knockback
+            IDamageable damageable = enemyTarget.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(GetAttackDamage());
+            }
+            
+            // Apply knockback based on attack direction
+            Vector3 knockbackDirection = Vector3.zero;
+            
+            // Determine primary knockback direction based on currentAttackRotation
+            if (currentAttackRotation == 0f) // Right
+            {
+                knockbackDirection = new Vector3(1f, Random.Range(-1f, 2f), 0f);
+            }
+            else if (currentAttackRotation == 180f) // Left
+            {
+                knockbackDirection = new Vector3(-1f, Random.Range(-1f, 2f), 0f);
+            }
+            else if (currentAttackRotation == 90f) // Up
+            {
+                knockbackDirection = new Vector3(Random.Range(-1f, 2f), 1f, 0f);
+            }
+            else if (currentAttackRotation == 270f) // Down
+            {
+                knockbackDirection = new Vector3(Random.Range(-1f, 2f), -1f, 0f);
+            }
+            
+            // Normalize the knockback direction to ensure consistent distance
+            knockbackDirection.Normalize();
+            
+            // Check if enemy still exists before applying knockback
+            if (enemyTarget != null)
+            {
+                enemyTarget.transform.position += knockbackDirection;
+            }
         }
     }
 

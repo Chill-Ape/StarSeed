@@ -15,9 +15,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float minDistanceMeleeAttack;
     [SerializeField] private float meleeAttackCooldown = 1f;
 
-    [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 100f;
-    private float health;
+    [Header("Block Settings")]
+    [SerializeField] private AudioClip blockSoundEffect;
+    private AudioSource audioSource;
 
     public Weapon CurrentWeapon { get; set; }
 
@@ -52,11 +52,15 @@ public class PlayerAttack : MonoBehaviour
         playerMana = GetComponent<PlayerMana>();
         playerMovement = GetComponent<PlayerMovement>();
         playerAnimations = GetComponent<PlayerAnimation>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void Start()
     {
-        health = maxHealth;
         CurrentWeapon = initialWeapon;
         actions.Attack.ClickAttack.performed += ctx => Attack();
 
@@ -441,37 +445,29 @@ public class PlayerAttack : MonoBehaviour
 
     public float ProcessDamage(float damage)
     {
-        Debug.Log($"Processing damage: {damage}, Blocking: {isBlocking}");
-        
         if (isDodging)
         {
-            Debug.Log("Dodged the attack!");
             return 0f; // No damage if dodging
         }
 
         if (isBlocking)
         {
-            Debug.Log($"Blocking! Original damage: {damage}, Damage reduction: {damageReduction}");
-            
             // Play block effect when actually blocking an attack
             if (blockEffect != null)
             {
-                Debug.Log("Playing block effect");
                 blockEffect.Play();
             }
-            else
+
+            // Play block sound effect
+            if (blockSoundEffect != null && audioSource != null)
             {
-                Debug.Log("Block effect is null!");
+                audioSource.PlayOneShot(blockSoundEffect);
             }
             
             float reducedDamage = damage * (1f - damageReduction);
-            // Round to nearest whole number
-            reducedDamage = Mathf.Round(reducedDamage);
-            Debug.Log($"Blocked attack! Original damage: {damage}, Reduced damage: {reducedDamage}");
-            return reducedDamage;
+            return Mathf.Round(reducedDamage);
         }
 
-        // Round to nearest whole number for non-blocked damage
         return Mathf.Round(damage);
     }
 
@@ -483,36 +479,27 @@ public class PlayerAttack : MonoBehaviour
 
     public void StartBlock()
     {
-        if (isDodging) return; // Can't block while dodging
-        
-        isBlocking = true;
-        Debug.Log("Blocking started");
-        
-        // Disable movement while blocking
-        if (playerMovement != null)
+        if (!isDodging)
         {
-            playerMovement.enabled = false;
-        }
-        
-        // Set the blocking animation
-        if (playerAnimations != null)
-        {
-            playerAnimations.SetBlockingAnimation(true);
+            isBlocking = true;
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = false;
+            }
+            if (playerAnimations != null)
+            {
+                playerAnimations.SetBlockingAnimation(true);
+            }
         }
     }
 
     public void EndBlock()
     {
         isBlocking = false;
-        Debug.Log("Blocking ended");
-        
-        // Re-enable movement when blocking ends
         if (playerMovement != null)
         {
             playerMovement.enabled = true;
         }
-        
-        // End the blocking animation
         if (playerAnimations != null)
         {
             playerAnimations.SetBlockingAnimation(false);

@@ -15,9 +15,14 @@ public class FSMState
     
     private void ExecuteActions()
     {
+        if (Actions == null || Actions.Length == 0) return;
+        
         for (int i = 0; i < Actions.Length; i++)
         {
-            Actions[i].Act();
+            if (Actions[i] != null)
+            {
+                Actions[i].Act();
+            }
         }
     }
 
@@ -26,14 +31,17 @@ public class FSMState
         if (Transitions == null || Transitions.Length <= 0) return;
         for (int i = 0; i < Transitions.Length; i++)
         {
-            bool value = Transitions[i].Decision.Decide();
-            if (value)
+            if (Transitions[i]?.Decision != null)
             {
-                enemyBrain.ChangeState(Transitions[i].TrueState);
-            }
-            else
-            {
-                enemyBrain.ChangeState(Transitions[i].FalseState);
+                bool value = Transitions[i].Decision.Decide();
+                if (value)
+                {
+                    enemyBrain.ChangeState(Transitions[i].TrueState);
+                }
+                else
+                {
+                    enemyBrain.ChangeState(Transitions[i].FalseState);
+                }
             }
         }
     }

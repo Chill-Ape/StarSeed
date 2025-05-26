@@ -3,119 +3,96 @@ using System.Collections;
 
 public class ActionAttack : FSMAction
 {
-    [Header("Config")]
-    [SerializeField] private float damage = 10f;  // Base damage
-    [SerializeField] private float damageVariation = 0.25f;  // 25% variation
-    [SerializeField] private float timeBtwAttacks;
-    [SerializeField] private float windupDuration = 0.2f;  // How long to flash red
-    [SerializeField] private Color windupColor = Color.red;  // The red flash color
-    [SerializeField] private float dashDuration = 0.2f;  // How long the dash takes
-    [SerializeField] private float dashDistance = 2f;    // How far to dash
+    [Header("Attack Settings")]
+    [SerializeField] private float windupDuration = 0.5f;
+    [SerializeField] private float dashDistance = 2f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float minDamage = 5f;
+    [SerializeField] private float maxDamage = 10f;
 
     private EnemyBrain enemyBrain;
-    private float timer;
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
-    private bool isAttacking = false;
-    private Vector3 originalPosition;
-    
+    private Animator animator;
+    private Coroutine attackCoroutine;
+
     private void Awake()
     {
         enemyBrain = GetComponent<EnemyBrain>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
-        {
-            originalColor = spriteRenderer.color;
-        }
-    }
-
-    private float GetRandomDamage()
-    {
-        float minDamage = damage * (1f - damageVariation);
-        float maxDamage = damage * (1f + damageVariation);
-        return Mathf.Round(Random.Range(minDamage, maxDamage));
+        animator = GetComponent<Animator>();
     }
 
     public override void Act()
     {
-        if (!isAttacking)
+        if (attackCoroutine == null)
         {
-            AttackPlayer();
-        }
-    }
-
-    private void AttackPlayer()
-    {
-        if (enemyBrain.Player == null) return;
-        timer -= Time.deltaTime;
-        if (timer <= 0f)
-        {
-            StartCoroutine(WindupAttack());
+            attackCoroutine = StartCoroutine(WindupAttack());
         }
     }
 
     private IEnumerator WindupAttack()
     {
-        isAttacking = true;
-        originalPosition = transform.position;
-        
-        // Flash red
-        if (spriteRenderer != null)
+        if (enemyBrain == null || enemyBrain.Player == null)
         {
-            spriteRenderer.color = windupColor;
+            attackCoroutine = null;
+            yield break;
         }
 
+        // Start windup animation
+        if (animator != null)
+        {
+            animator.SetBool("IsWindup", true);
+        }
+
+        // Wait for windup duration
         yield return new WaitForSeconds(windupDuration);
 
-        // Calculate dash target
-        Vector3 directionToPlayer = (enemyBrain.Player.transform.position - transform.position).normalized;
-        Vector3 dashTarget = transform.position + (directionToPlayer * dashDistance);
+        // Stop windup animation
+        if (animator != null)
+        {
+            animator.SetBool("IsWindup", false);
+        }
 
+        // Calculate dash direction
+        Vector3 dashDirection = (enemyBrain.Player.transform.position - transform.position).normalized;
+        
+        // Store initial position
+        Vector3 startPosition = transform.position;
+        
+        // Calculate target position
+        Vector3 targetPosition = startPosition + dashDirection * dashDistance;
+        
         // Perform dash
         float elapsedTime = 0f;
         while (elapsedTime < dashDuration)
         {
-            float t = elapsedTime / dashDuration;
-            // Use smoothstep for better movement
-            float smoothT = t * t * (3f - 2f * t);
-            transform.position = Vector3.Lerp(originalPosition, dashTarget, smoothT);
             elapsedTime += Time.deltaTime;
+            float t = elapsedTime / dashDuration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
             yield return null;
         }
-
-        // Ensure we end up exactly at the target position
-        transform.position = dashTarget;
 
         // Check if player is still in range after the dash
         float distanceToPlayer = Vector3.Distance(transform.position, enemyBrain.Player.transform.position);
         if (distanceToPlayer <= dashDistance)
         {
             // Deal damage with variation
-            IDamageable player = enemyBrain.Player.GetComponent<IDamageable>();
-            if (player != null)
+            PlayerHealth playerHealth = enemyBrain.Player.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
             {
                 float damage = GetRandomDamage();
-                Debug.Log($"Enemy attempting to deal {damage} damage to player");
-                player.TakeDamage(damage);
-            }
-            else
-            {
-                Debug.LogError("Player component not found!");
+                playerHealth.TakeDamage(damage);
             }
         }
-        else
-        {
-            Debug.Log("Player dodged out of range!");
-        }
 
-        timer = timeBtwAttacks;
+        // Wait for attack cooldown
+        yield return new WaitForSeconds(attackCooldown);
+        
+        // Reset the coroutine reference
+        attackCoroutine = null;
+    }
 
-        // Reset color
-        if (spriteRenderer != null)
-        {
-            spriteRenderer.color = originalColor;
-        }
-
-        isAttacking = false;
+    private float GetRandomDamage()
+    {
+        return Mathf.Round(Random.Range(minDamage, maxDamage));
     }
 }

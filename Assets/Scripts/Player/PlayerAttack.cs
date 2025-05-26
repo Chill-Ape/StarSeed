@@ -19,6 +19,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AudioClip blockSoundEffect;
     private AudioSource audioSource;
 
+    [Header("Attack Settings")]
+    [SerializeField] private AudioClip attackHitSound; // New field for attack hit sound
+
     public Weapon CurrentWeapon { get; set; }
 
     private PlayerActions actions;
@@ -40,11 +43,13 @@ public class PlayerAttack : MonoBehaviour
     private float dodgeDuration;
     private bool isDodging = false;
     private bool isBlocking = false;
+    public bool IsBlocking => isBlocking;
 
     private float dodgeHeight;
 
     private float damageReduction;
     private ParticleSystem blockEffect;
+    private float blockDuration = 0.5f; // Make this configurable in the inspector if needed
 
     private void Awake()
     {
@@ -205,6 +210,12 @@ public class PlayerAttack : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(GetAttackDamage());
+                
+                // Play attack hit sound
+                if (attackHitSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackHitSound);
+                }
             }
             
             // Apply knockback based on attack direction
@@ -350,34 +361,57 @@ public class PlayerAttack : MonoBehaviour
         blockEffect = effect;
     }
 
-    public void Block()
+    public void StartBlock()
     {
         if (isDodging) return; // Can't block while dodging
         
         isBlocking = true;
-        if (blockEffect != null)
+        if (playerMovement != null)
         {
-            blockEffect.Play();
+            playerMovement.enabled = false;
         }
-
-        // Stop any existing block coroutine
-        if (blockCoroutine != null)
+        if (playerAnimations != null)
         {
-            StopCoroutine(blockCoroutine);
+            playerAnimations.SetBlockingAnimation(true);
         }
-        
-        // Start new block coroutine
-        blockCoroutine = StartCoroutine(BlockCoroutine());
     }
 
-    private IEnumerator BlockCoroutine()
+    public void EndBlock()
     {
-        yield return new WaitForSeconds(0.5f);
         isBlocking = false;
-        if (blockEffect != null)
+        if (playerMovement != null)
         {
-            blockEffect.Stop();
+            playerMovement.enabled = true;
         }
+        if (playerAnimations != null)
+        {
+            playerAnimations.SetBlockingAnimation(false);
+        }
+    }
+
+    public float ProcessDamage(float damage)
+    {
+        if (isBlocking)
+        {
+            // Play block sound effect and show block effect
+            if (blockSoundEffect != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(blockSoundEffect);
+            }
+            if (blockEffect != null)
+            {
+                blockEffect.transform.position = transform.position; // Set effect position to player
+                blockEffect.Play();
+            }
+            return Mathf.Round(damage * (1f - damageReduction));
+        }
+        return damage;
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died!");
+        Destroy(gameObject);
     }
 
     public void Dodge()
@@ -441,68 +475,5 @@ public class PlayerAttack : MonoBehaviour
         // Ensure we end up exactly at the target position
         transform.position = targetPosition;
         isDodging = false;
-    }
-
-    public float ProcessDamage(float damage)
-    {
-        if (isDodging)
-        {
-            return 0f; // No damage if dodging
-        }
-
-        if (isBlocking)
-        {
-            // Play block effect when actually blocking an attack
-            if (blockEffect != null)
-            {
-                blockEffect.Play();
-            }
-
-            // Play block sound effect
-            if (blockSoundEffect != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(blockSoundEffect);
-            }
-            
-            float reducedDamage = damage * (1f - damageReduction);
-            return Mathf.Round(reducedDamage);
-        }
-
-        return Mathf.Round(damage);
-    }
-
-    private void Die()
-    {
-        Debug.Log("Player died!");
-        Destroy(gameObject);
-    }
-
-    public void StartBlock()
-    {
-        if (!isDodging)
-        {
-            isBlocking = true;
-            if (playerMovement != null)
-            {
-                playerMovement.enabled = false;
-            }
-            if (playerAnimations != null)
-            {
-                playerAnimations.SetBlockingAnimation(true);
-            }
-        }
-    }
-
-    public void EndBlock()
-    {
-        isBlocking = false;
-        if (playerMovement != null)
-        {
-            playerMovement.enabled = true;
-        }
-        if (playerAnimations != null)
-        {
-            playerAnimations.SetBlockingAnimation(false);
-        }
     }
 }

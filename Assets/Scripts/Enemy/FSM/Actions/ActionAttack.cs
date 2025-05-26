@@ -10,15 +10,22 @@ public class ActionAttack : FSMAction
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private float minDamage = 5f;
     [SerializeField] private float maxDamage = 10f;
+    [SerializeField] private AudioClip attackHitSound;
 
     private EnemyBrain enemyBrain;
     private Animator animator;
     private Coroutine attackCoroutine;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         enemyBrain = GetComponent<EnemyBrain>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     public override void Act()
@@ -81,6 +88,12 @@ public class ActionAttack : FSMAction
             {
                 float damage = GetRandomDamage();
                 playerHealth.TakeDamage(damage);
+                
+                // Only play attack hit sound if player is not blocking
+                if (!playerHealth.IsBlocking() && attackHitSound != null && audioSource != null)
+                {
+                    audioSource.PlayOneShot(attackHitSound);
+                }
             }
         }
 

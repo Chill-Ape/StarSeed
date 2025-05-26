@@ -6,11 +6,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private PlayerStats stats;
     
     private PlayerAnimation playerAnimations;
+    private PlayerAttack playerAttack;
     public bool IsDead { get; private set; }
 
     private void Awake()
     {
         playerAnimations = GetComponent<PlayerAnimation>();
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void Update()
@@ -26,7 +28,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (stats.Health <= 0f || IsDead) return;
         
         // Get the PlayerAttack component to check blocking state
-        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
         if (playerAttack != null)
         {
             // Let PlayerAttack handle the damage reduction
@@ -101,5 +102,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         playerAnimations.SetReviveAnimation();
         playerAnimations.SetMoveBoolTransition(false);
         playerAnimations.SetAttackAnimation(false);
+    }
+
+    public bool IsBlocking()
+    {
+        return playerAttack != null && playerAttack.IsBlocking;
     }
 }

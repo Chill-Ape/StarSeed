@@ -458,7 +458,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (isBlocking)
         {
-            damage *= 0.5f;
+            damage *= (1f - damageReduction);
             Debug.Log($"Blocked attack! Reduced damage to: {damage}");
         }
 

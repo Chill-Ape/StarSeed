@@ -86,9 +86,22 @@ public class ActionAttack : FSMAction
         // Ensure we end up exactly at the target position
         transform.position = dashTarget;
 
-        // Deal damage with variation
-        IDamageable player = enemyBrain.Player.GetComponent<IDamageable>();
-        player.TakeDamage(GetRandomDamage());
+        // Check if player is still in range after the dash
+        float distanceToPlayer = Vector3.Distance(transform.position, enemyBrain.Player.transform.position);
+        if (distanceToPlayer <= dashDistance)
+        {
+            // Deal damage with variation
+            IDamageable player = enemyBrain.Player.GetComponent<IDamageable>();
+            if (player != null)
+            {
+                player.TakeDamage(GetRandomDamage());
+            }
+        }
+        else
+        {
+            Debug.Log("Player dodged out of range!");
+        }
+
         timer = timeBtwAttacks;
 
         // Reset color

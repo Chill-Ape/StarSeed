@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
 
     void Awake()
     {
-        if (FindObjectsOfType<SceneLoader>().Length > 1)
+        if (Object.FindObjectsByType<SceneLoader>(FindObjectsSortMode.None).Length > 1)
         {
             Destroy(gameObject);
             return;
@@ -61,7 +61,7 @@ public class SceneLoader : MonoBehaviour
             {
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
-                rb.isKinematic = true;
+                rb.bodyType = RigidbodyType2D.Static;
             }
 
             // Get Animator & freeze animation
@@ -109,7 +109,7 @@ public class SceneLoader : MonoBehaviour
             // Restore movement
             Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
             if (rb != null)
-                rb.isKinematic = false;
+                rb.bodyType = RigidbodyType2D.Dynamic;
 
             animator = player.GetComponent<Animator>();
             if (animator != null)

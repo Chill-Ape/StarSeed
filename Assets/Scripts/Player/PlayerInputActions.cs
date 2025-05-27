@@ -27,7 +27,9 @@ public class PlayerInputActions : MonoBehaviour
     {
         // Create the input actions
         clickAttackAction = new InputAction("ClickAttack", binding: "<Mouse>/leftButton");
-        blockAction = new InputAction("Block", binding: "<Mouse>/rightButton");
+        blockAction = new InputAction("Block");
+        blockAction.AddBinding("<Mouse>/rightButton");
+        blockAction.AddBinding("<Keyboard>/slash");
         dodgeAction = new InputAction("Dodge", binding: "<Keyboard>/leftShift");
 
         playerAttack = GetComponent<PlayerAttack>();

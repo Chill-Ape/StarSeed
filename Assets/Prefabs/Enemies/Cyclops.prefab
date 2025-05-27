@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2229664497289005963}
   - component: {fileID: 1474816336278995577}
   - component: {fileID: 2150887457910461141}
-  - component: {fileID: 4110820222462398957}
   - component: {fileID: 5778588709690102064}
   - component: {fileID: 4393239237542581196}
   - component: {fileID: 7763312110006991780}
@@ -173,7 +172,7 @@ Animator:
   m_GameObject: {fileID: 2832796120822670705}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 98c2ef5565070184f8cc65a28ab97ccb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 724bae9b8b59bf149a4ee1914b1c9dd4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -185,52 +184,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &4110820222462398957
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2832796120822670705}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &5778588709690102064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,8 +294,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e764c797149e5994a92690cd8106929a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  timeBtwAttacks: 1
+  windupDuration: 0.5
+  dashDistance: 2
+  dashDuration: 0.2
+  attackCooldown: 1
+  minDamage: 5
+  maxDamage: 10
+  attackHitSound: {fileID: 0}
 --- !u!114 &4900985803420644291
 MonoBehaviour:
   m_ObjectHideFlags: 0

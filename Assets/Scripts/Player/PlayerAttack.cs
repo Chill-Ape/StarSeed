@@ -52,8 +52,6 @@ public class PlayerAttack : MonoBehaviour
 
     private float dodgeHeight;
 
-    private float blockDuration = 0.5f; // Make this configurable in the inspector if needed
-
     private void Awake()
     {
         actions = new PlayerActions();
@@ -69,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        CurrentWeapon = initialWeapon;
+           EquipWeapon(initialWeapon);
         actions.Attack.ClickAttack.performed += ctx => Attack();
 
     }
@@ -254,6 +252,12 @@ public class PlayerAttack : MonoBehaviour
                 StartCoroutine(KnockbackCoroutine(closestEnemy, knockbackDirection));
             }
         }
+    }
+
+     public void EquipWeapon(Weapon newWeapon)
+    {
+        CurrentWeapon = newWeapon;
+        stats.TotalDamage = stats.BaseDamage + CurrentWeapon.Damage;
     }
 
     private IEnumerator KnockbackCoroutine(EnemyBrain enemy, Vector3 knockbackDirection)

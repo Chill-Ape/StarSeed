@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         
         // Disable the Rigidbody2D to prevent any physics interactions
         GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
     }
 
     public void ResetPlayer()
@@ -100,7 +100,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         
         // Reset the Rigidbody2D
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.isKinematic = false;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         
         // Reset all animation triggers and states
         playerAnimations.ResetAllTriggers();

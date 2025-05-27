@@ -19,9 +19,33 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI manaTMP;
     [SerializeField] private TextMeshProUGUI expTMP;
 
+    [Header("Stats Panel")] 
+    [SerializeField] private GameObject statsPanel;
+    [SerializeField] private TextMeshProUGUI statLevelTMP;
+    [SerializeField] private TextMeshProUGUI statDamageTMP;
+    [SerializeField] private TextMeshProUGUI statCChanceTMP;
+    [SerializeField] private TextMeshProUGUI statCDamageTMP;
+    [SerializeField] private TextMeshProUGUI statTotalExpTMP;
+    [SerializeField] private TextMeshProUGUI statCurrentExpTMP;
+    [SerializeField] private TextMeshProUGUI statRequiredExpTMP;
+    [SerializeField] private TextMeshProUGUI attributePointsTMP;
+    [SerializeField] private TextMeshProUGUI strengthTMP;
+    [SerializeField] private TextMeshProUGUI dexterityTMP;
+    [SerializeField] private TextMeshProUGUI intelligenceTMP;
+    
+
     private void Update()
     {
         UpdatePlayerUI();
+    }
+
+    public void OpenCloseStatsPanel()
+    {
+        statsPanel.SetActive(!statsPanel.activeSelf);
+        if (statsPanel.activeSelf)
+        {
+            UpdateStatsPanel();
+        }
     }
 
     private void UpdatePlayerUI()
@@ -38,4 +62,37 @@ public class UIManager : MonoBehaviour
         manaTMP.text = $"{stats.Mana} / {stats.MaxMana}";
         expTMP.text = $"{stats.CurrentExp} / {stats.NextLevelExp}";
     }
+
+    private void UpdateStatsPanel()
+    {
+        statLevelTMP.text = stats.Level.ToString();
+        statDamageTMP.text = stats.TotalDamage.ToString();
+        statCChanceTMP.text = stats.CriticalChance.ToString();
+        statCDamageTMP.text = stats.CriticalDamage.ToString();
+        statTotalExpTMP.text = stats.TotalExp.ToString();
+        statCurrentExpTMP.text = stats.CurrentExp.ToString();
+        statRequiredExpTMP.text = stats.NextLevelExp.ToString();
+
+        attributePointsTMP.text = $"Points: {stats.AttributePoints}";
+        strengthTMP.text = stats.Strength.ToString();
+        dexterityTMP.text = stats.Dexterity.ToString();
+        intelligenceTMP.text = stats.Intelligence.ToString();
+    }
+
+    private void UpgradeCallback()
+    {
+        UpdateStatsPanel();
+    }
+    
+    private void OnEnable()
+    {
+       // PlayerUpgrade.OnPlayerUpgradeEvent += UpgradeCallback;
+    }
+
+    private void OnDisable()
+    {
+       // PlayerUpgrade.OnPlayerUpgradeEvent -= UpgradeCallback;
+    }
 }
+
+

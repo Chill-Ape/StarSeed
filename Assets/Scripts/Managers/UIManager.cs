@@ -38,4 +38,4 @@ public class UIManager : MonoBehaviour
         manaTMP.text = $"{stats.Mana} / {stats.MaxMana}";
         expTMP.text = $"{stats.CurrentExp} / {stats.NextLevelExp}";
     }
-}
+} 

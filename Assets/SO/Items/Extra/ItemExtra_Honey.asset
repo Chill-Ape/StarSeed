@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f39994f997042f459e8dd19c47a62ef, type: 3}
+  m_Name: ItemExtra_Honey
+  m_EditorClassIdentifier: 
+  ID: ItemHoney
+  Name: Honey
+  Icon: {fileID: 21300000, guid: 76cf61f55054c554b8e291752713bb31, type: 3}
+  Description: 'A creamy Honey '
+  ItemType: 3
+  IsConsumable: 1
+  IsStackable: 0
+  MaxStack: 10
+  Quantity: 0

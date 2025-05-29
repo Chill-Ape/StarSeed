@@ -7,17 +7,22 @@ public class Player : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
+
+    [Header("Test")]
+    public ItemHealthPotion HealthPotion;
+    public ItemManaPotion ManaPotion;
     public PlayerMana PlayerMana { get; private set; }
+    public PlayerHealth PlayerHealth { get; private set; }
     public PlayerStats Stats => stats;
 
     private PlayerAnimation playerAnimations;
-    private PlayerHealth playerHealth;
+    
 
     private void Awake()
     {
          PlayerMana = GetComponent<PlayerMana>();
          playerAnimations = GetComponent<PlayerAnimation>();
-         playerHealth = GetComponent<PlayerHealth>();
+         PlayerHealth = GetComponent<PlayerHealth>();
 
         if (instance == null)
         {
@@ -31,10 +36,30 @@ public class Player : MonoBehaviour
         playerAnimations = GetComponent<PlayerAnimation>();
     }
 
+   
+   
+    private void Update()
+ {
+     if (Input.GetKeyDown(KeyCode.T))
+     {
+         if (HealthPotion.UseItem())
+         {
+             Debug.Log("Using Health Potion");
+         }
+         
+         if (ManaPotion.UseItem())
+         {
+             Debug.Log("Using Mana Potion");
+         }
+     }
+ }
+   
+   
+
     public void ResetPlayer()
     {
         stats.ResetPlayer();
-        playerHealth.ResetPlayer();
+        PlayerHealth.ResetPlayer();
     }
 
     public void SwitchSeed(CropController.CropType newSeed)

@@ -33,12 +33,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dexterityTMP;
     [SerializeField] private TextMeshProUGUI intelligenceTMP;
     
-
     private void Update()
     {
         UpdatePlayerUI();
     }
-
+    
     public void OpenCloseStatsPanel()
     {
         statsPanel.SetActive(!statsPanel.activeSelf);
@@ -47,7 +46,7 @@ public class UIManager : MonoBehaviour
             UpdateStatsPanel();
         }
     }
-
+    
     private void UpdatePlayerUI()
     {
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount,
@@ -86,13 +85,11 @@ public class UIManager : MonoBehaviour
     
     private void OnEnable()
     {
-       // PlayerUpgrade.OnPlayerUpgradeEvent += UpgradeCallback;
+        PlayerUpgrade.OnPlayerUpgradeEvent += UpgradeCallback;
     }
 
     private void OnDisable()
     {
-       // PlayerUpgrade.OnPlayerUpgradeEvent -= UpgradeCallback;
+        PlayerUpgrade.OnPlayerUpgradeEvent -= UpgradeCallback;
     }
 }
-
-

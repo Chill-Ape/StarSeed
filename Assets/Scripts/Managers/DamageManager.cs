@@ -1,22 +1,11 @@
 using UnityEngine;
 using TMPro;
 
-public class DamageManager : MonoBehaviour
+public class DamageManager : Singleton<DamageManager>
 {
-    public static DamageManager Instance { get; private set; }
+
     public DamageText damageTextPrefab;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     public void ShowDamageText(float damageAmount, Transform parent, bool isPlayerDamage = false)
     {

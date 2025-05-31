@@ -14,16 +14,17 @@ public class Player : MonoBehaviour
     public PlayerMana PlayerMana { get; private set; }
     public PlayerHealth PlayerHealth { get; private set; }
     public PlayerStats Stats => stats;
+    public PlayerAttack PlayerAttack { get; private set; }
 
-    private PlayerAnimation playerAnimations;
+    private PlayerAnimation playerAnimation;
     
 
     private void Awake()
     {
-         PlayerMana = GetComponent<PlayerMana>();
-         playerAnimations = GetComponent<PlayerAnimation>();
-         PlayerHealth = GetComponent<PlayerHealth>();
-
+        PlayerMana = GetComponent<PlayerMana>();
+        PlayerHealth = GetComponent<PlayerHealth>();
+        PlayerAttack = GetComponent<PlayerAttack>();
+        playerAnimation = GetComponent<PlayerAnimation>();
         if (instance == null)
         {
             instance = this;
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        playerAnimations = GetComponent<PlayerAnimation>();
+        //playerAnimations = GetComponent<PlayerAnimation>();
     }
 
    
@@ -59,7 +60,8 @@ public class Player : MonoBehaviour
     public void ResetPlayer()
     {
         stats.ResetPlayer();
-        PlayerHealth.ResetPlayer();
+        playerAnimation.ResetAllTriggers();
+        PlayerMana.ResetMana();
     }
 
     public void SwitchSeed(CropController.CropType newSeed)

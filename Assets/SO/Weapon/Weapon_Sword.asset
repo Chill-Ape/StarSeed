@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69f38c3c162904542acc5913474e7d5a, type: 3}
   m_Name: Weapon_Sword
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 21300000, guid: 6019e96afb2057f45930762b66648a64, type: 3}
+  Name: Sword
+  Icon: {fileID: 21300000, guid: f1f97fa2202d81c4f973cd060d061d52, type: 3}
   WeaponType: 1
   Damage: 4
   RequiredMana: 0

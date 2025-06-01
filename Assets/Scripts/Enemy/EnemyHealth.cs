@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public float CurrentHealth { get; private set; }
 
     private Animator animator;
+    private Rigidbody2D rb2D;
     private EnemyBrain enemyBrain;
     private EnemyLoot enemyLoot;
     private EnemySelector enemySelector;
@@ -21,6 +22,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         enemyLoot = GetComponent<EnemyLoot>();
         enemyBrain = GetComponent<EnemyBrain>();
         enemySelector = GetComponent<EnemySelector>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
@@ -46,7 +48,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         animator.SetTrigger("Dead");
         enemyBrain.enabled = false;
         enemySelector.NoSelectionCallback();
-        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        //gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        rb2D.bodyType = RigidbodyType2D.Static;
         OnEnemyDeadEvent?.Invoke();
         GameManager.Instance.AddPlayerExp(enemyLoot.ExpDrop);
     }

@@ -164,6 +164,10 @@ public class PlayerAttack : MonoBehaviour
             EnemyBrain enemy = collider.GetComponent<EnemyBrain>();
             if (enemy != null)
             {
+                // Skip dead enemies
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if (enemyHealth.CurrentHealth <= 0f) continue;
+
                 float distance = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distance < closestDistance)
                 {

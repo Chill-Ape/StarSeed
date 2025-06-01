@@ -19,9 +19,14 @@ public class Inventory : Singleton<Inventory>
 
     private readonly string INVENTORY_KEY_DATA = "MY_INVENTORY";
     
-    public void Start()
+    private void Awake()
     {
+        base.Awake();
         inventoryItems = new InventoryItem[inventorySize];
+    }
+
+    private void Start()
+    {
         VerifyItemsForDraw();
         LoadInventory();
     }

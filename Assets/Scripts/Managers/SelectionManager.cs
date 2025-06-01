@@ -34,9 +34,9 @@ public class SelectionManager : MonoBehaviour
             if (hit.collider != null)
             {
                 EnemyBrain enemy = hit.collider.GetComponent<EnemyBrain>();
-                if (enemy == null) return; 
-                //EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-                //if (enemyHealth.CurrentHealth <= 0f) return;
+                if (enemy == null) return;
+                
+                // Allow selection of dead enemies for loot
                 OnEnemySelectedEvent?.Invoke(enemy);
             }
             else

@@ -26,7 +26,7 @@ public class PlayerInputActions : MonoBehaviour
     private void Awake()
     {
         // Create the input actions
-        clickAttackAction = new InputAction("ClickAttack", binding: "<Mouse>/leftButton");
+        clickAttackAction = new InputAction("ClickAttack", binding: "<Keyboard>/space");
         blockAction = new InputAction("Block");
         blockAction.AddBinding("<Mouse>/rightButton");
         blockAction.AddBinding("<Keyboard>/slash");

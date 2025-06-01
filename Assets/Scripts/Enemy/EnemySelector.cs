@@ -6,10 +6,14 @@ public class EnemySelector : MonoBehaviour
     [SerializeField] private GameObject selectorSprite;
 
     private EnemyBrain enemyBrain;
+    private EnemyHealth enemyHealth;
+    private EnemyLoot enemyLoot;
 
     private void Awake()
     {
         enemyBrain = GetComponent<EnemyBrain>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        enemyLoot = GetComponent<EnemyLoot>();
     }
 
     private void EnemySelectedCallback(EnemyBrain enemySelected)
@@ -17,6 +21,12 @@ public class EnemySelector : MonoBehaviour
         if (enemySelected == enemyBrain)
         {
             selectorSprite.SetActive(true);
+            
+            // If enemy is dead, show loot panel
+            if (enemyHealth.CurrentHealth <= 0f)
+            {
+                LootManager.Instance.ShowLoot(enemyLoot);
+            }
         }
         else
         {
